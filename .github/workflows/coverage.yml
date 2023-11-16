@@ -29,3 +29,5 @@ jobs:
           pytest --junitxml=pytest.xml --cov-report=term-missing --cov=src tests/test_integration*.py | tee pytest-coverage.txt
       - name: Comment coverage
         uses: coroo/pytest-coverage-commentator@v1.0.2
+    permissions:
+      pull-requests: write
