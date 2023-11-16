@@ -23,15 +23,21 @@ classifiers = [
 dynamic = ["version"]
 dependencies = []
 
+[project.urls]
+"Homepage" = "https://github.com/BenjaminMummery/phone-footage-sorter"
+"Bug Tracker" = "https://github.com/BenjaminMummery/phone-footage-sorter/issues"
+
 [project.scripts]
-phone-footag-sorter = "src.phone_footage_sorter:main"
+phone-footag-sorter = "src.phone_footage_sorter.entry:main"
 
 [project.optional-dependencies]
 dev = [
+    "build",
     "pre-commit",
     "pytest",
     "pytest-cov",
     "pytest-mock",
+    "pytest-virtualenv",
 ]
 
 [tool.setuptools.packages]

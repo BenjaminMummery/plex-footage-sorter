@@ -4,7 +4,7 @@ from pathlib import Path
 
 from pytest_mock import MockerFixture
 
-from src.phone_footage_sorter import main
+from src.phone_footage_sorter.entry import main
 
 
 class TestNullCases:

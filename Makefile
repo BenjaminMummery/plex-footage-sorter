@@ -25,8 +25,18 @@ test_venv/touchfile:
 	pip install -e '.[dev]'
 	touch test_venv/touchfile
 
+# BUILD
+build: test_venv
+	@. test_venv/bin/activate; \
+	python -c "$$PRETTYPRINT_PYSCRIPT" BUILDING DISTRIBUTIONS; \
+	python -m build
+
 # TEST
 test: test_venv test_integration
+	@. test_venv/bin/activate; \
+	python -c "$$PRETTYPRINT_PYSCRIPT"
+
+test_all: test_venv test_integration test_system
 	@. test_venv/bin/activate; \
 	python -c "$$PRETTYPRINT_PYSCRIPT"
 
@@ -40,7 +50,7 @@ test_integration: test_venv
 	python -c "$$PRETTYPRINT_PYSCRIPT" RUNNING INTEGRATION TESTS; \
 	pytest --cov=src tests/test_integration*.py -x
 
-test_system: test_venv
+test_system: test_venv build
 	@. test_venv/bin/activate; \
 	python -c "$$PRETTYPRINT_PYSCRIPT" RUNNING SYSTEM TESTS; \
 	pytest tests/test_system*.py -x
