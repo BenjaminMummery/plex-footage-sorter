@@ -1,0 +1,67 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name="phone_footage_sorter"
+authors=[
+    {name = "Benjamin Mummery", email="benjamin.mummery@zapatacomputing.com"}
+]
+license = {file = "LICENSE"}
+description = "A simple script to process android phone footage default names into plex-friendly filenames."
+readme = "README.md"
+requires-python = ">=3.8"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: Implementation :: CPython",
+    "Programming Language :: Python :: Implementation :: PyPy",
+]
+dynamic = ["version"]
+dependencies = []
+
+[project.urls]
+"Homepage" = "https://github.com/BenjaminMummery/phone-footage-sorter"
+"Bug Tracker" = "https://github.com/BenjaminMummery/phone-footage-sorter/issues"
+
+[project.scripts]
+phone-footag-sorter = "src.phone_footage_sorter.entry:main"
+
+[project.optional-dependencies]
+dev = [
+    "build",
+    "pytest",
+    "pytest-cov",
+    "pytest-mock",
+    "pytest-virtualenv",
+]
+
+[tool.setuptools.packages]
+find = {}
+
+[tool.distutils.bdist_wheel]
+universal = true
+
+[tool.mypy]
+exclude = "tests/"
+warn_unused_configs = true
+check_untyped_defs = true
+
+[tool.pytest.ini_options]
+addopts = "--strict-markers"
+
+[tool.interrogate]
+ignore-init-method = true
+fail-under = 100
+verbose = 2
+ignore_magic = true
+
+[tool.flake8]
+ignore = ["E203", "W503"]
+max-line-length = 88
+style="google"
+count = true
+arg-type-hints-in-docstring = true
