@@ -33,7 +33,6 @@ phone-footag-sorter = "src.phone_footage_sorter.entry:main"
 [project.optional-dependencies]
 dev = [
     "build",
-    "pre-commit",
     "pytest",
     "pytest-cov",
     "pytest-mock",
