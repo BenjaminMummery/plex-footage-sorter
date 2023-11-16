@@ -48,7 +48,7 @@ test_integration: test_venv
 	python -c "$$PRETTYPRINT_PYSCRIPT" RUNNING INTEGRATION TESTS; \
 	pytest --cov=src tests/test_integration*.py -x
 
-test_system: test_venv build
+test_system: test_venv
 	@. test_venv/bin/activate; \
 	python -c "$$PRETTYPRINT_PYSCRIPT" RUNNING SYSTEM TESTS; \
 	pytest tests/test_system*.py -x
