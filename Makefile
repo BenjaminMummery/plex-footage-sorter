@@ -32,13 +32,11 @@ build: test_venv
 	python -m build
 
 # TEST
-test: test_venv test_integration
+test: test_venv test_unit test_integration
 	@. test_venv/bin/activate; \
 	python -c "$$PRETTYPRINT_PYSCRIPT"
 
-test_all: test_venv test_integration test_system
-	@. test_venv/bin/activate; \
-	python -c "$$PRETTYPRINT_PYSCRIPT"
+test_all: test_venv test test_system
 
 test_unit: test_venv
 	@. test_venv/bin/activate; \
