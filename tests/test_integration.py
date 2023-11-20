@@ -18,9 +18,9 @@ class TestNullCases:
             main()
 
 
-class TestSingleFiles:
+class TestFlatDir:
     @staticmethod
-    def test_renames_correctly(tmp_path: Path, cwd, mocker: MockerFixture):
+    def test_renames_single_file_correctly(tmp_path: Path, cwd, mocker: MockerFixture):
         # GIVEN
         filename = "20220202_222222.mp4"
         (tmp_path / filename).write_text("<sentinel>")
@@ -33,3 +33,26 @@ class TestSingleFiles:
         # THEN
         with open(tmp_path / "Training Videos - 2022-02-02.mp4", "r") as f:
             assert f.read() == "<sentinel>"
+
+    @staticmethod
+    def test_renames_multiple_files_for_same_day(
+        tmp_path: Path, cwd, mocker: MockerFixture
+    ):
+        # GIVEN
+        for i, file in enumerate(["20220202_222222.mp4", "20220202_222223.mp4"]):
+            (tmp_path / file).write_text(f"<{i} sentinel>")
+        mocker.patch("sys.argv", ["stub_name"])
+
+        # WHEN
+        with cwd(tmp_path):
+            main()
+
+        # THEN
+        for i, file in enumerate(
+            [
+                "Training Videos - 2022-02-02 - Part1.mp4",
+                "Training Videos - 2022-02-02 - Part2.mp4",
+            ]
+        ):
+            with open(tmp_path / file, "r") as f:
+                assert f.read() == f"<{i} sentinel>"
