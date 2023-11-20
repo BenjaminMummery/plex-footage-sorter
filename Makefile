@@ -60,9 +60,8 @@ clean:
 	find . -name "*.pyc" -type f -delete
 	find . -name "*__pycache__" -delete
 
-# UTILITES
+# UTILITIES
 release: test_venv
 	@. test_venv/bin/activate; \
 	semantic-release changelog; \
 	semantic-release version
-
