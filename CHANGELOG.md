@@ -33,6 +33,8 @@
 
 ### Ci
 
+* ci: update release process. ([`1ed7c25`](https://github.com/BenjaminMummery/phone-footage-sorter/commit/1ed7c257fdd9ffe41c4c85322b8c4126c3b1e553))
+
 * ci: exclude changelog. ([`70640cf`](https://github.com/BenjaminMummery/phone-footage-sorter/commit/70640cf6cc2130c8cd4b88264450df0a318373fb))
 
 * ci: semantic-release setup. (#4) ([`de77aae`](https://github.com/BenjaminMummery/phone-footage-sorter/commit/de77aaeb2f3d52653a2af4b5e91ae77bd0442e44))
@@ -54,6 +56,8 @@
 * ci: add pre-commit config. ([`6fe2710`](https://github.com/BenjaminMummery/phone-footage-sorter/commit/6fe271038d291df6c0b6b480cf89aa80db5af3a8))
 
 ### Documentation
+
+* docs: update changelog. ([`07b86d7`](https://github.com/BenjaminMummery/phone-footage-sorter/commit/07b86d7297e763dbc44874b62c3c544920e97979))
 
 * docs: update changelog. ([`fbf0dac`](https://github.com/BenjaminMummery/phone-footage-sorter/commit/fbf0dac8fcbd54020b9e3d01beab82ac95e308ed))
 
