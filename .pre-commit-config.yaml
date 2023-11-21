@@ -6,7 +6,8 @@ default_stages: [commit, push]
 exclude: |
   (?x)(
     setup.py|
-    pyproject.toml
+    pyproject.toml|
+    CHANGELOG.md
   )
 
 repos:

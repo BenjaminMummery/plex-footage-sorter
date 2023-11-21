@@ -63,5 +63,8 @@ clean:
 # UTILITIES
 release: test_venv
 	@. test_venv/bin/activate; \
+	git reset *; \
 	semantic-release changelog; \
+	git add CHANGELOG.md; \
+	git commit -m "docs: update changelog."; \
 	semantic-release version
