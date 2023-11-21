@@ -55,6 +55,8 @@
 
 ### Documentation
 
+* docs: update changelog. ([`dcb250e`](https://github.com/BenjaminMummery/phone-footage-sorter/commit/dcb250e27fc6a106643acbfda7aa01d3a8186208))
+
 * docs: update README.md ([`d05926e`](https://github.com/BenjaminMummery/phone-footage-sorter/commit/d05926efc20051fd88a88b6896af6794818b30fb))
 
 ### Fix
