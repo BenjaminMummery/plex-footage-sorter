@@ -28,7 +28,7 @@ dependencies = []
 "Bug Tracker" = "https://github.com/BenjaminMummery/phone-footage-sorter/issues"
 
 [project.scripts]
-phone-footag-sorter = "src.phone_footage_sorter.entry:main"
+phone-footage-sorter = "src.phone_footage_sorter.entry:main"
 
 [project.optional-dependencies]
 dev = [
@@ -37,6 +37,7 @@ dev = [
     "pytest-cov",
     "pytest-mock",
     "pytest-virtualenv",
+    "python-semantic-release",
 ]
 
 [tool.setuptools.packages]
@@ -76,7 +77,7 @@ tag_format = "v{version}"
 version_variables = ["src/__init__.py:__version__"]
 
 [tool.semantic_release.branches.main]
-match = "(main|master)"
+match = "(main|master|release)"
 prerelease_token = "rc"
 prerelease = false
 

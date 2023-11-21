@@ -11,7 +11,7 @@ class TestNullCases:  # TODO: remove this as soon as we have additional units to
     @staticmethod
     def test_no_files(tmp_path: Path, cwd, mocker: MockerFixture):
         # GIVEN
-        mocker.patch("sys.argv", ["stub_name"])
+        mocker.patch("sys.argv", ["stub_name", "stub title"])
 
         # WHEN
         with cwd(tmp_path):

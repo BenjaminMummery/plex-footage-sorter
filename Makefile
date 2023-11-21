@@ -59,3 +59,9 @@ clean:
 	rm -f .coverage
 	find . -name "*.pyc" -type f -delete
 	find . -name "*__pycache__" -delete
+
+# UTILITIES
+release: test_venv
+	@. test_venv/bin/activate; \
+	semantic-release changelog; \
+	semantic-release version
