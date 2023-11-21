@@ -10,12 +10,17 @@ def main():
     """Search the dir for matching files and rename them."""
     days: dict = {}
     for file in os.listdir():
-        if (
-            date := datetime.strptime(os.path.splitext(file)[0], "%Y%m%d_%H%M%S").date()
-        ) not in days:
-            days[date] = [file]
-        else:
-            days[date].append(file)
+        try:
+            if (
+                date := datetime.strptime(
+                    os.path.splitext(file)[0], "%Y%m%d_%H%M%S"
+                ).date()
+            ) not in days:
+                days[date] = [file]
+            else:
+                days[date].append(file)
+        except ValueError:
+            continue
 
     for day in days:
         if len(files := days[day]) == 1:
