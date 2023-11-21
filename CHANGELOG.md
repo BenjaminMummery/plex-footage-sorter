@@ -1,7 +1,8 @@
 # CHANGELOG
 
 
-## Unreleased
+
+## v1.0.0 (2023-11-21)
 
 ### Breaking
 
@@ -57,6 +58,8 @@
 
 ### Documentation
 
+* docs: update changelog. ([`ed6e4e6`](https://github.com/BenjaminMummery/phone-footage-sorter/commit/ed6e4e60c8b0e759a66e822b10e2a38edf2f5a1d))
+
 * docs: update changelog. ([`07b86d7`](https://github.com/BenjaminMummery/phone-footage-sorter/commit/07b86d7297e763dbc44874b62c3c544920e97979))
 
 * docs: update changelog. ([`fbf0dac`](https://github.com/BenjaminMummery/phone-footage-sorter/commit/fbf0dac8fcbd54020b9e3d01beab82ac95e308ed))
@@ -82,4 +85,3 @@
 CI: 2 set up ci ([`ebba57a`](https://github.com/BenjaminMummery/phone-footage-sorter/commit/ebba57afa61a2d3dec2146b3ccb85ab8b05d1cae))
 
 * Initial commit ([`ac38349`](https://github.com/BenjaminMummery/phone-footage-sorter/commit/ac3834951db1ea32b8545b8cf47a0b148b795794))
-
