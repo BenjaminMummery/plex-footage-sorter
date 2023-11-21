@@ -3,5 +3,6 @@
 .coverage
 .ruff_cache
 .vscode
+build
 env
 test_venv
