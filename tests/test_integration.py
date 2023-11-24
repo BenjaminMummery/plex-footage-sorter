@@ -20,7 +20,7 @@ class TestNullCases:
             main()
 
 
-@pytest.mark.parametrize("custom_name", ["Training Videos"])
+@pytest.mark.parametrize("custom_name", ["Training Videos", "FOO"])
 class TestFlatDir:
     @staticmethod
     def test_renames_single_file_correctly(
@@ -85,3 +85,30 @@ class TestFlatDir:
             f"{custom_name} - 2022-02-02 - Part2.mp4",
             "not_a_matching_file.mp4",
         }
+
+    @staticmethod
+    def test_reports_renamed_files(
+        tmp_path: Path, cwd, mocker: MockerFixture, custom_name: str, capsys
+    ):
+        # GIVEN
+        files = [
+            "20220202_222222.mp4",
+            "20220202_222223.mp4",
+        ]
+        outfiles = [
+            f"{custom_name} - 2022-02-02 - Part1.mp4",
+            f"{custom_name} - 2022-02-02 - Part2.mp4",
+        ]
+        for file in files:
+            (tmp_path / file).write_text("")
+        mocker.patch("sys.argv", ["stub_name", custom_name])
+
+        # WHEN
+        with cwd(tmp_path):
+            main()
+
+        # THEN
+        out = capsys.readouterr().out
+        assert out.startswith("Renaming files:")
+        for i, file in enumerate(files):
+            assert f"{file} --> {outfiles[i]}" in out
