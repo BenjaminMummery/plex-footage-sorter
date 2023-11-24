@@ -33,6 +33,10 @@ def main():
         except ValueError:
             continue
 
+    if len(days) == 0:
+        return
+
+    print("Renaming files:")
     for day in days:
         if len(files := days[day]) == 1:
             os.rename(
@@ -43,12 +47,13 @@ def main():
             )
         else:
             for i, file in enumerate(sorted(files)):
-                os.rename(
-                    file,
+                new_name = (
                     f"{args.title} - "
                     f"{day.year}-{day.month:02d}-{day.day:02d} - Part{i+1}"
-                    f"{os.path.splitext(file)[1]}",
+                    f"{os.path.splitext(file)[1]}"
                 )
+                os.rename(file, new_name)
+                print(f"  {file} --> {new_name}")
 
 
 if __name__ == "__main__":
