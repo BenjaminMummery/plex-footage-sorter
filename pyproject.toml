@@ -23,6 +23,9 @@ classifiers = [
 dynamic = ["version"]
 dependencies = []
 
+[tool.setuptools.dynamic]
+version = {attr = "src.__version__"}
+
 [project.urls]
 "Homepage" = "https://github.com/BenjaminMummery/phone-footage-sorter"
 "Bug Tracker" = "https://github.com/BenjaminMummery/phone-footage-sorter/issues"
