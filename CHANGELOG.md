@@ -2,6 +2,21 @@
 
 
 
+## v1.1.1 (2023-11-25)
+
+### Fix
+
+* fix: correct version numbering
+
+Fixes a bug where build versions would default to 0.0.0 ([`c25b55b`](https://github.com/BenjaminMummery/phone-footage-sorter/commit/c25b55baf8931586cb8353d0db461ae14e99c720))
+
+### Unknown
+
+* Merge pull request #13 from BenjaminMummery/fix/build-version-numbering
+
+fix: correct version numbering ([`ff7861e`](https://github.com/BenjaminMummery/phone-footage-sorter/commit/ff7861ede7bb901de46e34b1dba726f0ebaf2409))
+
+
 ## v1.1.0 (2023-11-25)
 
 ### Feature
