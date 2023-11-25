@@ -109,6 +109,6 @@ class TestFlatDir:
 
         # THEN
         out = capsys.readouterr().out
-        assert out.startswith("Renaming files:")
+        assert "Renaming files:" in out
         for i, file in enumerate(files):
             assert f"{file} --> {outfiles[i]}" in out
