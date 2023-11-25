@@ -4,5 +4,6 @@
 .ruff_cache
 .vscode
 build
+dist
 env
 test_venv
