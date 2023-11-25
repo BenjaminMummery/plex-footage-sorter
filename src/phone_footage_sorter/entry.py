@@ -19,8 +19,11 @@ def main():
     )
     args = parser.parse_args()
 
+    print(f"Discovering files in {os.getcwd()}", end="")
+
     days: dict = {}
     for file in os.listdir():
+        print(".", end="")
         try:
             if (
                 date := datetime.strptime(
@@ -37,7 +40,7 @@ def main():
         print("No files to rename, exiting.")
         return
 
-    print("Renaming files:")
+    print("\nRenaming files:")
     for day in days:
         if len(files := days[day]) == 1:
             os.rename(
