@@ -34,6 +34,7 @@ def main():
             continue
 
     if len(days) == 0:
+        print("No files to rename, exiting.")
         return
 
     print("Renaming files:")
