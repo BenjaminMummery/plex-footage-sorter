@@ -19,17 +19,40 @@ class TestNullCases:
         with cwd(tmp_path):
             main()
 
+    @staticmethod
+    def test_all_renamable_files_in_subdirs_and_not_recursive(
+        tmp_path: Path, cwd, mocker: MockerFixture
+    ):
+        # GIVEN
+        filename = "20220202_222222.mp4"
+        subdir = "subdir"
+        (tmp_path / subdir).mkdir()
+        (filepath := tmp_path / subdir / filename).write_text("<sentinel>")
+        mocker.patch("sys.argv", ["stub_name", "stub title"])
+        assert filepath.is_file()
+
+        # WHEN
+        with cwd(tmp_path):
+            main()
+
+        # THEN
+        assert filepath.is_file()
+
 
 @pytest.mark.parametrize("custom_name", ["Training Videos", "FOO"])
+@pytest.mark.parametrize("recursion_arg", ["-r", "--recursive", None])
 class TestFlatDir:
     @staticmethod
     def test_renames_single_file_correctly(
-        tmp_path: Path, cwd, mocker: MockerFixture, custom_name: str
+        tmp_path: Path, cwd, mocker: MockerFixture, custom_name: str, recursion_arg: str
     ):
         # GIVEN
         filename = "20220202_222222.mp4"
         (tmp_path / filename).write_text("<sentinel>")
-        mocker.patch("sys.argv", ["stub_name", custom_name])
+        args = ["stub_name", custom_name]
+        if recursion_arg is not None:
+            args.append(recursion_arg)
+        mocker.patch("sys.argv", args)
 
         # WHEN
         with cwd(tmp_path):
@@ -41,12 +64,15 @@ class TestFlatDir:
 
     @staticmethod
     def test_renames_multiple_files_for_same_day(
-        tmp_path: Path, cwd, mocker: MockerFixture, custom_name: str
+        tmp_path: Path, cwd, mocker: MockerFixture, custom_name: str, recursion_arg: str
     ):
         # GIVEN
         for i, file in enumerate(["20220202_222222.mp4", "20220202_222223.mp4"]):
             (tmp_path / file).write_text(f"<{i} sentinel>")
-        mocker.patch("sys.argv", ["stub_name", custom_name])
+        args = ["stub_name", custom_name]
+        if recursion_arg is not None:
+            args.append(recursion_arg)
+        mocker.patch("sys.argv", args)
 
         # WHEN
         with cwd(tmp_path):
@@ -64,7 +90,7 @@ class TestFlatDir:
 
     @staticmethod
     def test_ignores_non_matching_files(
-        tmp_path: Path, cwd, mocker: MockerFixture, custom_name: str
+        tmp_path: Path, cwd, mocker: MockerFixture, custom_name: str, recursion_arg: str
     ):
         # GIVEN
         for file in [
@@ -73,7 +99,10 @@ class TestFlatDir:
             "not_a_matching_file.mp4",
         ]:
             (tmp_path / file).write_text("")
-        mocker.patch("sys.argv", ["stub_name", custom_name])
+        args = ["stub_name", custom_name]
+        if recursion_arg is not None:
+            args.append(recursion_arg)
+        mocker.patch("sys.argv", args)
 
         # WHEN
         with cwd(tmp_path):
@@ -88,7 +117,12 @@ class TestFlatDir:
 
     @staticmethod
     def test_reports_renamed_files(
-        tmp_path: Path, cwd, mocker: MockerFixture, custom_name: str, capsys
+        tmp_path: Path,
+        cwd,
+        mocker: MockerFixture,
+        custom_name: str,
+        capsys,
+        recursion_arg: str,
     ):
         # GIVEN
         files = [
@@ -101,7 +135,10 @@ class TestFlatDir:
         ]
         for file in files:
             (tmp_path / file).write_text("")
-        mocker.patch("sys.argv", ["stub_name", custom_name])
+        args = ["stub_name", custom_name]
+        if recursion_arg is not None:
+            args.append(recursion_arg)
+        mocker.patch("sys.argv", args)
 
         # WHEN
         with cwd(tmp_path):
@@ -115,9 +152,9 @@ class TestFlatDir:
 
 
 @pytest.mark.parametrize("custom_name", ["Training Videos", "FOO"])
+@pytest.mark.parametrize("recursion_arg", ["-r", "--recursive"])
 class TestSubDirs:
     @staticmethod
-    @pytest.mark.parametrize("recursion_arg", ["-r", "--recursive"])
     def test_renames_single_file_correctly(
         tmp_path: Path, cwd, mocker: MockerFixture, custom_name: str, recursion_arg: str
     ):
