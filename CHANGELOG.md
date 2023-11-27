@@ -2,6 +2,19 @@
 
 
 
+## v1.2.0 (2023-11-27)
+
+### Feature
+
+* feat: add recursive option (#19)
+
+* test: add test for file in subdir.
+
+* feat: rename files recursively.
+
+* test: add tests for improper use of recursion ([`cc94f87`](https://github.com/BenjaminMummery/phone-footage-sorter/commit/cc94f87536d1e14a083d18968b25b351112373d6))
+
+
 ## v1.1.1 (2023-11-25)
 
 ### Fix
