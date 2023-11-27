@@ -112,3 +112,30 @@ class TestFlatDir:
         assert "Renaming files:" in out
         for i, file in enumerate(files):
             assert f"{file} --> {outfiles[i]}" in out
+
+
+@pytest.mark.parametrize("custom_name", ["Training Videos", "FOO"])
+class TestSubDirs:
+    @staticmethod
+    @pytest.mark.parametrize("recursion_arg", ["-r", "--recursive"])
+    def test_renames_single_file_correctly(
+        tmp_path: Path, cwd, mocker: MockerFixture, custom_name: str, recursion_arg: str
+    ):
+        # GIVEN
+        filename = "20220202_222222.mp4"
+        subdir = "subdir"
+        (tmp_path / subdir).mkdir()
+        (tmp_path / subdir / filename).write_text("<sentinel>")
+        mocker.patch("sys.argv", ["stub_name", custom_name, recursion_arg])
+
+        # WHEN
+        with cwd(tmp_path):
+            main()
+
+        # THEN
+        expected_outpath = tmp_path / subdir / f"{custom_name} - 2022-02-02.mp4"
+        assert (
+            expected_outpath.is_file()
+        ), f"{expected_outpath}\n{os.listdir(tmp_path / subdir)}"
+        with open(expected_outpath, "r") as f:
+            assert f.read() == "<sentinel>"
