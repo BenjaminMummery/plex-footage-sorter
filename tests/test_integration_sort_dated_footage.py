@@ -13,7 +13,7 @@ class TestNullCases:
     @staticmethod
     def test_no_files(tmp_path: Path, cwd, mocker: MockerFixture):
         # GIVEN
-        mocker.patch("sys.argv", ["stub_name", "stub title"])
+        mocker.patch("sys.argv", ["stub_name", "date-based", "stub title"])
 
         # WHEN
         with cwd(tmp_path):
@@ -28,7 +28,7 @@ class TestNullCases:
         subdir = "subdir"
         (tmp_path / subdir).mkdir()
         (filepath := tmp_path / subdir / filename).write_text("<sentinel>")
-        mocker.patch("sys.argv", ["stub_name", "stub title"])
+        mocker.patch("sys.argv", ["stub_name", "date-based", "stub title"])
         assert filepath.is_file()
 
         # WHEN
@@ -49,7 +49,7 @@ class TestFlatDir:
         # GIVEN
         filename = "20220202_222222.mp4"
         (tmp_path / filename).write_text("<sentinel>")
-        args = ["stub_name", custom_name]
+        args = ["stub_name", "date-based", custom_name]
         if recursion_arg is not None:
             args.append(recursion_arg)
         mocker.patch("sys.argv", args)
@@ -69,7 +69,7 @@ class TestFlatDir:
         # GIVEN
         for i, file in enumerate(["20220202_222222.mp4", "20220202_222223.mp4"]):
             (tmp_path / file).write_text(f"<{i} sentinel>")
-        args = ["stub_name", custom_name]
+        args = ["stub_name", "date-based", custom_name]
         if recursion_arg is not None:
             args.append(recursion_arg)
         mocker.patch("sys.argv", args)
@@ -99,7 +99,7 @@ class TestFlatDir:
             "not_a_matching_file.mp4",
         ]:
             (tmp_path / file).write_text("")
-        args = ["stub_name", custom_name]
+        args = ["stub_name", "date-based", custom_name]
         if recursion_arg is not None:
             args.append(recursion_arg)
         mocker.patch("sys.argv", args)
@@ -135,7 +135,7 @@ class TestFlatDir:
         ]
         for file in files:
             (tmp_path / file).write_text("")
-        args = ["stub_name", custom_name]
+        args = ["stub_name", "date-based", custom_name]
         if recursion_arg is not None:
             args.append(recursion_arg)
         mocker.patch("sys.argv", args)
@@ -163,7 +163,9 @@ class TestSubDirs:
         subdir = "subdir"
         (tmp_path / subdir).mkdir()
         (tmp_path / subdir / filename).write_text("<sentinel>")
-        mocker.patch("sys.argv", ["stub_name", custom_name, recursion_arg])
+        mocker.patch(
+            "sys.argv", ["stub_name", "date-based", custom_name, recursion_arg]
+        )
 
         # WHEN
         with cwd(tmp_path):
