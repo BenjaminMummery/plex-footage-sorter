@@ -1,26 +1,39 @@
-# Phone Footage Sorter
+<!--- Copyright (c) 2023 Benjamin Mummery -->
+
+# Plex Footage Sorter
 
 A simple script to process android phone footage default names into plex-friendly filename
 
 <!--TOC-->
 
-- [Phone Footage Sorter](#phone-footage-sorter)
+- [Plex Footage Sorter](#plex-footage-sorter)
   - [Description](#description)
-  - [Caveats](#caveats)
-    - [Part Naming](#part-naming)
+  - [Renaming phone footage as date-based series](#renaming-phone-footage-as-date-based-series)
+    - [Caveat - Part Naming](#caveat---part-naming)
 
 <!--TOC-->
 
 ## Description
 
-This tool is designed for the highly-specific case where you have a lot of files with names like `20231116_104404.mp4` that you want to make available in [Plex] in the form of a date-based series structure.
+This package bundles a set of tools for renaming and/or moving files from various sources into plex-friendly patterns.
+Most of these are highly specific.
 
-The script scans the input directory for filenames matching the pattern `YYYYMMDD_SSSSSS.EXT` and renames them to the format `CUSTOMSERIESNAME-YYYY-MM-DD[ - PartX].EXT`.
+## Renaming phone footage as date-based series
 
-## Caveats
+Android phones (and possible iPhones, we haven't checked) name video files in the format `YYYYMMDD_SSSSSS.EXT`.
+Plex can interpret video files as a date-based tv series if they are named in the format `SERIESNAME-YYYY-MM-DD[ - PartX].EXT`.
+This tool is designed for the case where you take a lot of phone footage that you want to organise into a chronological series.
+We use it for organising our videos of our progress at learning various activities.
 
-### Part Naming
+To use this utility, dump all of the relevant footage into a folder, and run
+
+```
+plex-footage-sorter SERIESNAME
+```
+
+### Caveat - Part Naming
 
 We number parts consecutively for a single day.
 If there are more videos for that day that are not in the folder, the part numbering will be wrong.
 We might fix this at a later date.
+s
