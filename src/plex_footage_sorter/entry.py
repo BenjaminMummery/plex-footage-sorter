@@ -13,12 +13,15 @@ def main():
 
     # Parse args
     parser = argparse.ArgumentParser()
-    parser.add_argument(
+
+    subparsers = parser.add_subparsers(required=True)
+    parser_date_based = subparsers.add_parser("date-based")
+    parser_date_based.add_argument(
         "title",
         type=str,
         help="A custom name to be attached to the start of the new file names.",
     )
-    parser.add_argument(
+    parser_date_based.add_argument(
         "-r",
         "--recursive",
         action="store_true",
