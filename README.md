@@ -28,7 +28,7 @@ We use it for organising our videos of our progress at learning various activiti
 To use this utility, dump all of the relevant footage into a folder, and run
 
 ```
-plex-footage-sorter SERIESNAME
+plex-footage-sorter date-based SERIESNAME
 ```
 
 ### Caveat - Part Naming
