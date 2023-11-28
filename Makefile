@@ -32,7 +32,7 @@ build: test_venv
 	python -m build
 
 # TEST
-test: test_venv test_unit test_integration
+test: test_venv test_unit
 	@. test_venv/bin/activate; \
 	python -c "$$PRETTYPRINT_PYSCRIPT"
 

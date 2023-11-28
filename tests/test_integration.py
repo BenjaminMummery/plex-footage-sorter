@@ -7,7 +7,7 @@ from pytest_mock import MockerFixture
 from src.plex_footage_sorter.entry import main
 
 
-class TestNullCases:  # TODO: remove this as soon as we have additional units to test.
+class TestNullCases:
     @staticmethod
     def test_no_files(tmp_path: Path, cwd, mocker: MockerFixture):
         # GIVEN
