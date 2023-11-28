@@ -6,7 +6,7 @@ from pathlib import Path
 import pytest
 from pytest_mock import MockerFixture
 
-from src.phone_footage_sorter.entry import main
+from src.plex_footage_sorter.entry import main
 
 
 class TestNullCases:

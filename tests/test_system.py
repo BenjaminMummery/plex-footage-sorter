@@ -9,7 +9,7 @@ class TestSetup:
     @staticmethod
     def test_install(virtualenv, tmp_path):
         virtualenv.run(f"python -m pip install {os.getcwd()}")
-        virtualenv.run(f"cd {tmp_path} && phone-footage-sorter stub_title")
+        virtualenv.run(f"cd {tmp_path} && plex-footage-sorter stub_title")
 
 
 @pytest.mark.parametrize("custom_name", ["'Training Videos'"])
@@ -26,6 +26,6 @@ class TestRun:
             (tmp_path / file).write_text("")
 
         virtualenv.run(f"python -m pip install {os.getcwd()}")
-        virtualenv.run(f"cd {tmp_path} && phone-footage-sorter {custom_name}")
+        virtualenv.run(f"cd {tmp_path} && plex-footage-sorter {custom_name}")
 
         assert set(os.listdir(tmp_path)) == set(outfiles)
