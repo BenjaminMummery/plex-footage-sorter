@@ -36,4 +36,3 @@ plex-footage-sorter SERIESNAME
 We number parts consecutively for a single day.
 If there are more videos for that day that are not in the folder, the part numbering will be wrong.
 We might fix this at a later date.
-s
