@@ -2,6 +2,40 @@
 
 
 
+## v3.0.0 (2023-11-28)
+
+### Breaking
+
+* feat: switch to CLI subcommands.
+
+BREAKING CHANGE: `date-based` must now be specified when calling `plex-footage-sorter` in order to access the previous default behaviour. ([`5baaacf`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/5baaacf497cef42e624c1c5ed3fbe9a289764603))
+
+### Chore
+
+* chore: fix typo in README. ([`67d5b6c`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/67d5b6ca7fdd1706ac42371c5809405fb80718b8))
+
+* chore: bump version number. ([`3a9fcd1`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/3a9fcd16cb8048893f5e15e14e18150a7bfed027))
+
+### Refactor
+
+* refactor: move date-based sorting to its own source file. ([`97d1a13`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/97d1a1349f06c571df7e14e47b3971ea8a66bd81))
+
+### Test
+
+* test: add tests for change to subcommand cli. ([`60a698c`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/60a698c769585c09e7716ce01c3ee9abcf593609))
+
+
+## v2.0.0 (2023-11-28)
+
+### Unknown
+
+* Chore!: Rename (#20)
+
+* chore!: Package rename.
+
+* docs: update README. ([`4eb396e`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/4eb396eaee0f33aa22bff668eb76fffd06b45ade))
+
+
 ## v1.2.0 (2023-11-27)
 
 ### Feature
@@ -12,7 +46,7 @@
 
 * feat: rename files recursively.
 
-* test: add tests for improper use of recursion ([`cc94f87`](https://github.com/BenjaminMummery/phone-footage-sorter/commit/cc94f87536d1e14a083d18968b25b351112373d6))
+* test: add tests for improper use of recursion ([`cc94f87`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/cc94f87536d1e14a083d18968b25b351112373d6))
 
 
 ## v1.1.1 (2023-11-25)
@@ -21,38 +55,38 @@
 
 * fix: correct version numbering
 
-Fixes a bug where build versions would default to 0.0.0 ([`c25b55b`](https://github.com/BenjaminMummery/phone-footage-sorter/commit/c25b55baf8931586cb8353d0db461ae14e99c720))
+Fixes a bug where build versions would default to 0.0.0 ([`c25b55b`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/c25b55baf8931586cb8353d0db461ae14e99c720))
 
 ### Unknown
 
 * Merge pull request #13 from BenjaminMummery/fix/build-version-numbering
 
-fix: correct version numbering ([`ff7861e`](https://github.com/BenjaminMummery/phone-footage-sorter/commit/ff7861ede7bb901de46e34b1dba726f0ebaf2409))
+fix: correct version numbering ([`ff7861e`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/ff7861ede7bb901de46e34b1dba726f0ebaf2409))
 
 
 ## v1.1.0 (2023-11-25)
 
 ### Feature
 
-* feat: report file discovery. ([`7bd5e30`](https://github.com/BenjaminMummery/phone-footage-sorter/commit/7bd5e307dc8fae837db82897b12baad685d90ebd))
+* feat: report file discovery. ([`7bd5e30`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/7bd5e307dc8fae837db82897b12baad685d90ebd))
 
 ### Test
 
-* test: update tests for more verbose output. ([`400ba18`](https://github.com/BenjaminMummery/phone-footage-sorter/commit/400ba18c1240966cce90ed5dc4ab48bcfae9ad6f))
+* test: update tests for more verbose output. ([`400ba18`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/400ba18c1240966cce90ed5dc4ab48bcfae9ad6f))
 
 ### Unknown
 
 * Merge pull request #12 from BenjaminMummery/feat/report-file-discovery
 
-feat: report file discovery ([`f78deb1`](https://github.com/BenjaminMummery/phone-footage-sorter/commit/f78deb19ad0a75823f0829ffb00424cd4bf3583a))
+feat: report file discovery ([`f78deb1`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/f78deb19ad0a75823f0829ffb00424cd4bf3583a))
 
 * Feat: report no changes (#10)
 
 * chore: bump version.
 
-* feat: report no changes. ([`191f4b5`](https://github.com/BenjaminMummery/phone-footage-sorter/commit/191f4b5bb7ec48c023d9128009dffdda27175d87))
+* feat: report no changes. ([`191f4b5`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/191f4b5bb7ec48c023d9128009dffdda27175d87))
 
-* Update deploy.yml ([`2a6bfc4`](https://github.com/BenjaminMummery/phone-footage-sorter/commit/2a6bfc4476dddb6fceff5afebaecba990118da71))
+* Update deploy.yml ([`2a6bfc4`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/2a6bfc4476dddb6fceff5afebaecba990118da71))
 
 
 ## v1.0.1 (2023-11-24)
@@ -83,41 +117,41 @@ feat: report file discovery ([`f78deb1`](https://github.com/BenjaminMummery/phon
 
 * test: add tests for custom naming.
 
-* feat: add custom naming. ([`0249f5d`](https://github.com/BenjaminMummery/phone-footage-sorter/commit/0249f5d0bf58e0f1b3b8201a885d99c5850ac1ca))
+* feat: add custom naming. ([`0249f5d`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/0249f5d0bf58e0f1b3b8201a885d99c5850ac1ca))
 
 ### Ci
 
-* ci: semantic-release setup. (#4) ([`de77aae`](https://github.com/BenjaminMummery/phone-footage-sorter/commit/de77aaeb2f3d52653a2af4b5e91ae77bd0442e44))
+* ci: semantic-release setup. (#4) ([`de77aae`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/de77aaeb2f3d52653a2af4b5e91ae77bd0442e44))
 
-* ci: automated release? ([`a1f20e1`](https://github.com/BenjaminMummery/phone-footage-sorter/commit/a1f20e12b076c7ebe60ab3d94303ecd274994695))
+* ci: automated release? ([`a1f20e1`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/a1f20e12b076c7ebe60ab3d94303ecd274994695))
 
-* ci: remove build step. ([`e008689`](https://github.com/BenjaminMummery/phone-footage-sorter/commit/e008689267a51ae4085199cc41ad9ac310427274))
+* ci: remove build step. ([`e008689`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/e008689267a51ae4085199cc41ad9ac310427274))
 
-* ci: don&#39;t build wheel to test install. ([`7433a17`](https://github.com/BenjaminMummery/phone-footage-sorter/commit/7433a173d2f135c4f47386e3c992ca82df64510d))
+* ci: don&#39;t build wheel to test install. ([`7433a17`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/7433a173d2f135c4f47386e3c992ca82df64510d))
 
-* ci: build wheel for testing. ([`648af2f`](https://github.com/BenjaminMummery/phone-footage-sorter/commit/648af2f83a97c79f934f2b660ed529fb9f39a094))
+* ci: build wheel for testing. ([`648af2f`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/648af2f83a97c79f934f2b660ed529fb9f39a094))
 
-* ci: action permissions? ([`42b623e`](https://github.com/BenjaminMummery/phone-footage-sorter/commit/42b623e873bcde5a3e8273555d07e721755469d9))
+* ci: action permissions? ([`42b623e`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/42b623e873bcde5a3e8273555d07e721755469d9))
 
-* ci: add makefile. ([`ca8d6b4`](https://github.com/BenjaminMummery/phone-footage-sorter/commit/ca8d6b4d96bf00e1ebf1741b9bbb777511dc0afe))
+* ci: add makefile. ([`ca8d6b4`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/ca8d6b4d96bf00e1ebf1741b9bbb777511dc0afe))
 
-* ci: initial testing setup. ([`8eae69a`](https://github.com/BenjaminMummery/phone-footage-sorter/commit/8eae69ac2b16ccca0aaf666265fb40f3da878db1))
+* ci: initial testing setup. ([`8eae69a`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/8eae69ac2b16ccca0aaf666265fb40f3da878db1))
 
-* ci: add pre-commit config. ([`6fe2710`](https://github.com/BenjaminMummery/phone-footage-sorter/commit/6fe271038d291df6c0b6b480cf89aa80db5af3a8))
+* ci: add pre-commit config. ([`6fe2710`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/6fe271038d291df6c0b6b480cf89aa80db5af3a8))
 
 ### Documentation
 
-* docs: update README.md ([`d05926e`](https://github.com/BenjaminMummery/phone-footage-sorter/commit/d05926efc20051fd88a88b6896af6794818b30fb))
+* docs: update README.md ([`d05926e`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/d05926efc20051fd88a88b6896af6794818b30fb))
 
 ### Fix
 
-* fix: point ci to correct tests. ([`d1381ce`](https://github.com/BenjaminMummery/phone-footage-sorter/commit/d1381cef53e7b705048aa0570220c5a9fd495155))
+* fix: point ci to correct tests. ([`d1381ce`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/d1381cef53e7b705048aa0570220c5a9fd495155))
 
 ### Test
 
-* test: add placeholder unit test. ([`1eae0db`](https://github.com/BenjaminMummery/phone-footage-sorter/commit/1eae0db6bd03b58124fe7ef31d986ea31a8e1f69))
+* test: add placeholder unit test. ([`1eae0db`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/1eae0db6bd03b58124fe7ef31d986ea31a8e1f69))
 
-* test: add system tests. ([`767baac`](https://github.com/BenjaminMummery/phone-footage-sorter/commit/767baac1fac5efc6957cf9d6b66a61d1f6de48fb))
+* test: add system tests. ([`767baac`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/767baac1fac5efc6957cf9d6b66a61d1f6de48fb))
 
 ### Unknown
 
@@ -125,9 +159,9 @@ feat: report file discovery ([`f78deb1`](https://github.com/BenjaminMummery/phon
 
 * test: add test for reporting change files.
 
-* feat: report changed files. ([`a848d96`](https://github.com/BenjaminMummery/phone-footage-sorter/commit/a848d9611492f7eb27c700258cb1dc6514584212))
+* feat: report changed files. ([`a848d96`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/a848d9611492f7eb27c700258cb1dc6514584212))
 
-* Create python-publish.yml (#8) ([`12a18da`](https://github.com/BenjaminMummery/phone-footage-sorter/commit/12a18dae8eab012c1a52f2858ff25ae8b0c91638))
+* Create python-publish.yml (#8) ([`12a18da`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/12a18dae8eab012c1a52f2858ff25ae8b0c91638))
 
 * V1.0.0 (#7)
 
@@ -149,10 +183,10 @@ Automatically generated by python-semantic-release
 
 ---------
 
-Co-authored-by: semantic-release &lt;semantic-release&gt; ([`de224b0`](https://github.com/BenjaminMummery/phone-footage-sorter/commit/de224b09889818f6fa065f86aaee92cf6f796186))
+Co-authored-by: semantic-release &lt;semantic-release&gt; ([`de224b0`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/de224b09889818f6fa065f86aaee92cf6f796186))
 
 * Merge pull request #3 from BenjaminMummery/2-set-up-ci
 
-CI: 2 set up ci ([`ebba57a`](https://github.com/BenjaminMummery/phone-footage-sorter/commit/ebba57afa61a2d3dec2146b3ccb85ab8b05d1cae))
+CI: 2 set up ci ([`ebba57a`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/ebba57afa61a2d3dec2146b3ccb85ab8b05d1cae))
 
-* Initial commit ([`ac38349`](https://github.com/BenjaminMummery/phone-footage-sorter/commit/ac3834951db1ea32b8545b8cf47a0b148b795794))
+* Initial commit ([`ac38349`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/ac3834951db1ea32b8545b8cf47a0b148b795794))
