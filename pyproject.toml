@@ -3,7 +3,7 @@ requires = ["setuptools"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name="phone_footage_sorter"
+name="plex_footage_sorter"
 authors=[
     {name = "Benjamin Mummery", email="benjamin.mummery@zapatacomputing.com"}
 ]
@@ -27,11 +27,11 @@ dependencies = []
 version = {attr = "src.__version__"}
 
 [project.urls]
-"Homepage" = "https://github.com/BenjaminMummery/phone-footage-sorter"
-"Bug Tracker" = "https://github.com/BenjaminMummery/phone-footage-sorter/issues"
+"Homepage" = "https://github.com/BenjaminMummery/plex-footage-sorter"
+"Bug Tracker" = "https://github.com/BenjaminMummery/plex-footage-sorter/issues"
 
 [project.scripts]
-phone-footage-sorter = "src.phone_footage_sorter.entry:main"
+plex-footage-sorter = "src.plex_footage_sorter.entry:main"
 
 [project.optional-dependencies]
 dev = [
