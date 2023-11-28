@@ -3,4 +3,4 @@
 """Initialiser to make plex_footage_sorter accessible externally."""
 
 # Version number, automatically updated by semantic-release
-__version__ = "2.0.0"
+__version__ = "3.0.0"
