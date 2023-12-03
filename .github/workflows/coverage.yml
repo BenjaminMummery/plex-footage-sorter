@@ -9,7 +9,7 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 jobs:
-  IntegrationTestCoverage:
+  TestCoverage:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
