@@ -54,3 +54,24 @@ class TestCallingSortDatedFootage:
             str(tmp_path), "<title sentinel>", recursive=True
         )
         mock_sort_movpilot_series.assert_not_called()
+
+
+class TestCallingSortMovpilotSeries:
+    @staticmethod
+    def test_arg_passing(
+        cwd,
+        tmp_path: Path,
+        mocker: MockerFixture,
+        mock_sort_dated_footage,
+        mock_sort_movpilot_series,
+    ):
+        # GIVEN
+        mocker.patch("sys.argv", ["stub_name", "movpilot-series"])
+
+        # WHEN
+        with cwd(tmp_path):
+            main()
+
+        # THEN
+        mock_sort_dated_footage.assert_not_called()
+        mock_sort_movpilot_series.assert_called_once_with()
