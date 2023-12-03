@@ -11,26 +11,26 @@ concurrency:
 permissions:
   contents: read
 jobs:
-  # unit_tests:
-  #   runs-on: ubuntu-latest
-  #   strategy:
-  #     fail-fast: false
-  #     matrix:
-  #       python-versions: ['3.8', '3.9', '3.10', '3.11']
-  #   steps:
-  #     - uses: actions/checkout@v3
-  #     - name: Set up Python ${{ matrix.python-version }}
-  #       uses: actions/setup-python@v3
-  #       with:
-  #         python-version: ${{ matrix.python-versions }}
-  #     - name: Install dependencies
-  #       run: |
-  #         python -m pip install --upgrade pip
-  #         pip install flake8 pytest
-  #         pip install -e '.[dev]'
-  #     - name: Test with pytest
-  #       run: |
-  #         pytest tests/test_unit*.py
+  unit_tests:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-versions: ['3.8', '3.9', '3.10', '3.11']
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v3
+        with:
+          python-version: ${{ matrix.python-versions }}
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install flake8 pytest
+          pip install -e '.[dev]'
+      - name: Test with pytest
+        run: |
+          pytest tests/test_unit*.py
   integration_tests:
     runs-on: ubuntu-latest
     strategy:
