@@ -9,7 +9,7 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 jobs:
-  TestCoverage:
+  UnitTestCoverage:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -27,6 +27,21 @@ jobs:
       - name: Unit Test Coverage
         run: |-
           pytest --cov=src --fail-under=100 tests/test_unit*.py
+  IntegrationTestCoverage:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v3
+        with:
+          python-version: '3.11'
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install flake8 pytest
+          pip install -e '.[dev]'
       - name: Integration Test Coverage
         run: |-
           pytest --junitxml=pytest.xml --cov-report=term-missing --cov=src --fail-under=100 tests/test_integration*.py | tee pytest-coverage.txt
