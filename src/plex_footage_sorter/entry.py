@@ -5,7 +5,7 @@
 import argparse
 import os
 
-from . import _sort_dated_footage_as_date_series
+from . import _sort_dated_footage_as_date_series, _sort_movpilot_series
 
 
 def main():
@@ -37,7 +37,7 @@ def main():
             os.getcwd(), args.title, recursive=args.recursive
         )
     elif args.command == "movpilot-series":
-        return None
+        return _sort_movpilot_series.main()
 
 
 if __name__ == "__main__":
