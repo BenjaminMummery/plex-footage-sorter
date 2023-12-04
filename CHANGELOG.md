@@ -2,6 +2,93 @@
 
 
 
+## v4.0.0 (2023-12-04)
+
+### Chore
+
+* chore: add template movpilot sorter script. ([`a32df7f`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/a32df7f64a81f030de6de4330bcd57b7a9628847))
+
+### Ci
+
+* ci: only enforce integration test coverage ([`a5da104`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/a5da104c5ba3488fe8cb3083d2bd4a1da5a6b3de))
+
+* ci: separate unit and integration test runs. ([`ab7b3c3`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/ab7b3c38d02401f632768dbe8ea53ebf417de8e6))
+
+* ci: enforce 100% coverage? ([`8890081`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/8890081cd61404fbf7f59c786e25033eeff65417))
+
+* ci: nope, that didn&#39;t work, scrapping reporting unit test coverage. ([`9109d7d`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/9109d7d188feb3f88fe0413e651508e9e76b8525))
+
+* ci: report unit test coverage. ([`22dd8f0`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/22dd8f0e4e111fe94566ceeb43c2b868ec1983dc))
+
+### Documentation
+
+* docs: update readme. ([`7a99b4c`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/7a99b4ccb26164793ca921d4e0ab83d53ee4abc4))
+
+* docs: fix type in docstring. ([`67ca43e`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/67ca43e1b994e8ac3666107bd9b50ca806848851))
+
+* docs: update readme. ([`5d92a76`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/5d92a76ffaf9c77f95881c240f9eebe0f769c1bd))
+
+### Feature
+
+* feat: handle supplemental non-episode files. ([`65ee382`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/65ee3822eed7d604a77196047e460b0abbfdaf50))
+
+* feat: handle supplemental non-episode files. ([`c65da4a`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/c65da4a8e86f32114bfec87e68137e6ce48b7956))
+
+* feat: create correct subdirs for missing seasons. ([`bdf1331`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/bdf1331bab0011dd35839eb33b16045eb5969baa))
+
+* feat: remove underscores from episode titles. ([`c541e9d`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/c541e9d164915eabece1526ac5b056d178b48dbb))
+
+* feat: implement movpilot file sorting, ([`aeb42ec`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/aeb42ec699da751fe2478aed4e7087acc8c772e0))
+
+* feat: call movpilot sorter from entry. ([`ab7f11e`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/ab7f11e6075fbe1b04d73f0b00ce6057fe8cb295))
+
+* feat: minimal movpilot implementation. ([`7afe9b2`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/7afe9b2bdfcffbf4647a32e75ec8a1f2efd684c8))
+
+### Fix
+
+* fix: integration tests need to patch srgv. ([`ca6ecd1`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/ca6ecd1899c0b69c74eb788ed160ff6c5c8759a2))
+
+### Style
+
+* style: remove unused local variable. ([`b6f815f`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/b6f815fc39ff4521cc5adfbd2053ef3588114fce))
+
+### Test
+
+* test: add test for supplemental files. ([`bf2ce98`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/bf2ce98a992f52f4bffe861324b7f4b5f12eb099))
+
+* test: add test for episodes outside of season structure. ([`ae6f7c9`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/ae6f7c9a471d1a54e23ba50941a84d1461447839))
+
+* test: add tests for multiple series and misfiled episodes. ([`fdbbdd9`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/fdbbdd9dbbe7325a95188207ea3027b865cb559f))
+
+* test: add test for multiple amazon-style files. ([`12d0c5e`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/12d0c5e4ddaa0eafa8a29df1e042caca86b7f6ea))
+
+* test: add test for renaming single movpilot file. ([`e45401a`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/e45401ab6bc0fd4f59186a5f19bc2764f57c0eac))
+
+* test: add unit test for calling movpilot sorter. ([`70471ba`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/70471bafdc8f0017d90941ecc6aae288d1f8ae10))
+
+* test: add unit tests for entry. ([`2f68681`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/2f68681467e4df38963019c702e7eadb0dbc4864))
+
+* test: add tests for minimal movpilot sorter. ([`11a37f2`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/11a37f21564f90b58a6cfd5e1700b9101d57e691))
+
+* test: expaded system tests. ([`06e7c8a`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/06e7c8ab5b52c2d5f80a2d3e3edfb8412bbcf710))
+
+* test: adjust test strategy towards unit testing. ([`e7d7ab2`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/e7d7ab277d7333169547f5f6388cf8af8940dbc5))
+
+### Unknown
+
+* Merge pull request #25 from BenjaminMummery/21-rename-movpilot-series-downloads
+
+feat: rename movpilot series downloads ([`94b076e`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/94b076e0332329f329d595c4aa4d78f91ee82e21))
+
+* Update python-publish.yml ([`48ca88e`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/48ca88e308897e01f4d74c46376a023587f5fcfd))
+
+* Update coverage.yml ([`16948fc`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/16948fca2d3d7408631d4865eee6fa9f04249490))
+
+* Update coverage.yml ([`0e75427`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/0e754270cb689f4daa17b15f6bca86b975312f12))
+
+* Merge branch &#39;main&#39; into 21-rename-movpilot-series-downloads ([`b0a559e`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/b0a559e5337968f7bb04994be2f44f06b60dedad))
+
+
 ## v3.0.0 (2023-11-28)
 
 ### Breaking
@@ -10,19 +97,31 @@
 
 BREAKING CHANGE: `date-based` must now be specified when calling `plex-footage-sorter` in order to access the previous default behaviour. ([`5baaacf`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/5baaacf497cef42e624c1c5ed3fbe9a289764603))
 
+* feat: switch to CLI subcommands.
+
+BREAKING CHANGE: `date-based` must now be specified when calling `plex-footage-sorter` in order to access the previous default behaviour. ([`2910b60`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/2910b60d9ace6ff6d6bbb9b9729c6ca87bda240f))
+
 ### Chore
 
 * chore: fix typo in README. ([`67d5b6c`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/67d5b6ca7fdd1706ac42371c5809405fb80718b8))
 
 * chore: bump version number. ([`3a9fcd1`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/3a9fcd16cb8048893f5e15e14e18150a7bfed027))
 
+* chore: fix typo in README. ([`8839a6e`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/8839a6e664345936405d339ae53d79f42da23a6b))
+
+* chore: bump version number. ([`e810c3a`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/e810c3af020b6e8b289bff87b509e27bad70ab7d))
+
 ### Refactor
 
 * refactor: move date-based sorting to its own source file. ([`97d1a13`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/97d1a1349f06c571df7e14e47b3971ea8a66bd81))
 
+* refactor: move date-based sorting to its own source file. ([`decdf1d`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/decdf1db8ed4d9d2b9c470696b08ada7691d7b70))
+
 ### Test
 
 * test: add tests for change to subcommand cli. ([`60a698c`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/60a698c769585c09e7716ce01c3ee9abcf593609))
+
+* test: add tests for change to subcommand cli. ([`e70dfd9`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/e70dfd9afd1538f1585ee00f2e73b5ad58a7a273))
 
 
 ## v2.0.0 (2023-11-28)
