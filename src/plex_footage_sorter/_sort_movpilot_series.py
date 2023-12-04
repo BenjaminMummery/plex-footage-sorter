@@ -66,11 +66,32 @@ def main(directory: str):
 
     Args:
         directory (Path): The directory to be searched. The subdirectories of this
-            directory should be the folders for each series.
+            directory should be the folders for each series. For example:
+            ```txt
+            directory
+            ├── Castlevania
+            |   ├── 1
+            |   |   └── S01E001_witchbottle.mp4
+            |   └── 2
+            |       └── S02E002_old_homes.mp4
+            └── Goblin Slayer
+                └── S01E001_The_goblin_crown.mp4
+            ```
+            will be remapped as
+            ```txt
+            directory
+            ├── Castlevania
+            |   ├── Season01
+            |   |   └── Castlevania - S01E01 - witchbottle.mp4
+            |   └── Season02
+            |       └── Castlevania - S02E02 - old homes.mp4
+            └── Goblin Slayer
+                └── Season01
+                    └── Goblin Slayer - S01E01 - The goblin crown.mp4
+            ```
     """
     _directory: Path = Path(directory)
 
-    # Iterate over subdirs
     for series_name in next(os.walk("."))[1]:
         # Rename season subdirs
         for subdir in next(os.walk(_directory / series_name))[1]:
@@ -89,7 +110,7 @@ def main(directory: str):
         for episode in episodes:
             # Create season subdir if it doesn't already exist
             if (season_subdir := f"Season{episode.season:02d}") not in subdirs:
-                os.mkdir(_directory / season_subdir)
+                os.mkdir(_directory / series_name / season_subdir)
 
             # move / rename episode
             new_filename = (
