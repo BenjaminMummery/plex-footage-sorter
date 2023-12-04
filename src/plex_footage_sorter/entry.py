@@ -28,7 +28,7 @@ def main():
         default=False,
         help="Affect the current directory and all subdirectories.",
     )
-    parser_movpilot_series = subparsers.add_parser("movpilot-series")
+    subparsers.add_parser("movpilot-series")
 
     args = parser.parse_args()
 
