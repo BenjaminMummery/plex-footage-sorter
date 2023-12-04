@@ -88,3 +88,63 @@ class TestAmazonPattern:
         for file in expected_files:
             with open(file) as f:
                 assert f.read() == "<sentinel>"
+
+    @staticmethod
+    def test_multiple_series(tmp_path: Path, cwd, mocker: MockerFixture):
+        # GIVEN
+        series_name_1 = "firefly"
+        (tmp_path / series_name_1).mkdir()
+        (old_subdir_1 := (tmp_path / series_name_1 / "1")).mkdir()
+        (
+            old_file_1 := (tmp_path / series_name_1 / "1" / "S01E001_serenity.mp4")
+        ).write_text("<sentinel>")
+        series_name_2 = "Doctor Who (2005)"
+        (tmp_path / series_name_2).mkdir()
+        (old_subdir_2 := (tmp_path / series_name_2 / "1")).mkdir()
+        (
+            old_file_2 := (tmp_path / series_name_2 / "1" / "S01E001_rose.mp4")
+        ).write_text("<sentinel>")
+        mocker.patch("sys.argv", ["stub_name", "movpilot-series"])
+
+        # WHEN
+        with cwd(tmp_path):
+            main()
+
+        assert not old_file_1.exists()
+        assert not old_file_2.exists()
+        for file in [
+            tmp_path / series_name_1 / "Season01" / "firefly - S01E01 - serenity.mp4",
+            tmp_path
+            / series_name_2
+            / "Season01"
+            / "Doctor Who (2005) - S01E01 - rose.mp4",
+        ]:
+            with open(file) as f:
+                assert f.read() == "<sentinel>"
+        assert not old_subdir_1.exists()
+        assert not old_subdir_2.exists()
+
+    @staticmethod
+    def test_misfiled_episode(tmp_path: Path, cwd, mocker: MockerFixture):
+        # GIVEN
+        series_name = "Sleepy Hollow"
+        (tmp_path / series_name).mkdir()
+        (old_subdir := (tmp_path / series_name / "1")).mkdir()
+        (
+            old_file := (tmp_path / series_name / "1" / "S02E001_This_is_War.mp4")
+        ).write_text("<sentinel>")
+        mocker.patch("sys.argv", ["stub_name", "movpilot-series"])
+
+        # WHEN
+        with cwd(tmp_path):
+            main()
+
+        assert not old_file.exists()
+        with open(
+            tmp_path
+            / series_name
+            / "Season02"
+            / "Sleepy Hollow - S02E01 - This is War.mp4"
+        ) as f:
+            assert f.read() == "<sentinel>"
+        assert not old_subdir.exists()
