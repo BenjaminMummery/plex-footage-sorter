@@ -17,7 +17,7 @@ def _discover_files(directory: Path, recursive: bool = False) -> dict:
             only the specified directory will be searched. Defaults to False.
 
     Returns:
-        dict: A ampping of datetime date objects to file paths, where the date is
+        dict: A mapping of datetime date objects to file paths, where the date is
             derived from the file name.
     """
 

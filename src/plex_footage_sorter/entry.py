@@ -5,7 +5,7 @@
 import argparse
 import os
 
-from . import _sort_dated_footage_as_date_series
+from . import _sort_dated_footage_as_date_series, _sort_movpilot_series
 
 
 def main():
@@ -14,7 +14,7 @@ def main():
     # Parse args
     parser = argparse.ArgumentParser()
 
-    subparsers = parser.add_subparsers(required=True)
+    subparsers = parser.add_subparsers(required=True, dest="command")
     parser_date_based = subparsers.add_parser("date-based")
     parser_date_based.add_argument(
         "title",
@@ -28,11 +28,16 @@ def main():
         default=False,
         help="Affect the current directory and all subdirectories.",
     )
+    subparsers.add_parser("movpilot-series")
+
     args = parser.parse_args()
 
-    return _sort_dated_footage_as_date_series.main(
-        os.getcwd(), args.title, recursive=args.recursive
-    )
+    if args.command == "date-based":
+        return _sort_dated_footage_as_date_series.main(
+            os.getcwd(), args.title, recursive=args.recursive
+        )
+    elif args.command == "movpilot-series":
+        return _sort_movpilot_series.main(os.getcwd())
 
 
 if __name__ == "__main__":
