@@ -95,8 +95,7 @@ def main(directory: str):
             ```
     """
     _directory: Path = Path(directory)
-
-    for series_name in next(os.walk("."))[1]:
+    for series_name in next(os.walk(_directory))[1]:
         # Rename season subdirs
         for subdir in next(os.walk(_directory / series_name))[1]:
             season_no = int(subdir)

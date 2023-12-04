@@ -8,11 +8,11 @@ from pathlib import Path
 from typing import Optional
 
 
-def _discover_files(directory: Path, recursive: bool = False) -> dict:
+def _discover_files(directory: str, recursive: bool = False) -> dict:
     """Find files that match the format we want to convert.
 
     Args:
-        directory (Path): The directory to be searched.
+        directory (str): The path to the directory to be searched.
         recursive (bool, optional): If True, subdirectories will be searched. If false,
             only the specified directory will be searched. Defaults to False.
 
@@ -77,11 +77,11 @@ def _rename(
     print(f"  {filepath} --> {new_name}")
 
 
-def main(directory: Path, series_title: str, recursive: bool = False):
+def main(directory: str, series_title: str, recursive: bool = False):
     """Find and rename matching files.
 
     Args:
-        directory (Path): The directory in which to look for renamable files.
+        directory (str): The directory in which to look for renamable files.
         series_title (str): The series to which the files should belong.
         recursive (bool, optional): If True, search subdirectories of the specified
             directory. Defaults to False.
@@ -94,8 +94,8 @@ def main(directory: Path, series_title: str, recursive: bool = False):
     print("\nRenaming files:")
     for day in days:
         if len(files := days[day]) == 1:
-            _rename(files[0], series_title, day)
+            _rename(os.path.join(directory, files[0]), series_title, day)
         else:
             for i, file in enumerate(sorted(files)):
-                _rename(file, series_title, day, part=i + 1)
+                _rename(os.path.join(directory, file), series_title, day, part=i + 1)
     return
