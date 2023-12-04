@@ -2,6 +2,17 @@
 
 
 
+## v4.1.0 (2023-12-04)
+
+### Feature
+
+* feat: implement &#39;--version&#39; command. ([`7750506`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/775050652e5ed49df4e8f3ffbfdf76c085900e45))
+
+### Test
+
+* test: add test for ([`61de859`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/61de85966f8de909f1ed08be37a15f5e40a84a73))
+
+
 ## v4.0.0 (2023-12-04)
 
 ### Chore
