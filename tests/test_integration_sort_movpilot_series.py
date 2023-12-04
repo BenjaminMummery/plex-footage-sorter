@@ -125,7 +125,7 @@ class TestAmazonPattern:
         assert not old_subdir_2.exists()
 
     @staticmethod
-    def test_misfiled_episode(tmp_path: Path, cwd, mocker: MockerFixture):
+    def test_misfiled_episode_wrong_season(tmp_path: Path, cwd, mocker: MockerFixture):
         # GIVEN
         series_name = "Sleepy Hollow"
         (tmp_path / series_name).mkdir()
@@ -148,3 +148,26 @@ class TestAmazonPattern:
         ) as f:
             assert f.read() == "<sentinel>"
         assert not old_subdir.exists()
+
+    @staticmethod
+    def test_misfiled_episode_not_in_season(tmp_path: Path, cwd, mocker: MockerFixture):
+        # GIVEN
+        series_name = "Sleepy Hollow"
+        (tmp_path / series_name).mkdir()
+        (old_file := (tmp_path / series_name / "S02E001_This_is_War.mp4")).write_text(
+            "<sentinel>"
+        )
+        mocker.patch("sys.argv", ["stub_name", "movpilot-series"])
+
+        # WHEN
+        with cwd(tmp_path):
+            main()
+
+        assert not old_file.exists()
+        with open(
+            tmp_path
+            / series_name
+            / "Season02"
+            / "Sleepy Hollow - S02E01 - This is War.mp4"
+        ) as f:
+            assert f.read() == "<sentinel>"
