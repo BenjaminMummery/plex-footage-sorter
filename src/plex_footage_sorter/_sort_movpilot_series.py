@@ -48,7 +48,13 @@ def _discover_files(directory: Path) -> dict:
         m = re.match(r"^S(?P<season>\d{2})E(?P<episode>\d{3})_(?P<title>.*)$", filename)
 
         outfiles.append(
-            Episode(int(m["season"]), int(m["episode"]), m["title"], ext, file)
+            Episode(
+                int(m["season"]),
+                int(m["episode"]),
+                m["title"].replace("_", " "),
+                ext,
+                file,
+            )
         )
 
     print(f" Found {len(files)} file(s).")
