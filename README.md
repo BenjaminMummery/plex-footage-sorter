@@ -10,6 +10,7 @@ A simple script to process android phone footage default names into plex-friendl
   - [Description](#description)
   - [Renaming phone footage as date-based series](#renaming-phone-footage-as-date-based-series)
     - [Caveat - Part Naming](#caveat---part-naming)
+  - [Renaming Movpilot downloads as season-based series](#renaming-movpilot-downloads-as-season-based-series)
 
 <!--TOC-->
 
@@ -27,7 +28,7 @@ We use it for organising our videos of our progress at learning various activiti
 
 To use this utility, dump all of the relevant footage into a folder, and run
 
-```
+```bash
 plex-footage-sorter date-based SERIESNAME
 ```
 
@@ -36,3 +37,38 @@ plex-footage-sorter date-based SERIESNAME
 We number parts consecutively for a single day.
 If there are more videos for that day that are not in the folder, the part numbering will be wrong.
 We might fix this at a later date.
+
+## Renaming Movpilot downloads as season-based series
+
+Movpilot downloads of series episodes do not fit plex structures.
+For example, downloads from Amazon Prime follow the structure:
+
+```txt
+root
+└── Castlevania
+    ├── 1
+    |   └── S01E001_witchbottle.mp4
+    └── 2
+        └── S02E002_old_homes.mp4
+```
+
+whereas Plex would expect these to look like:
+
+```txt
+root
+└── Castlevania
+    ├── Season011
+    |   └── Castlevania - S01E01 - witchbottle.mp4
+    └── Season02
+        └── Castlevania - S02E02 - old homes.mp4
+```
+
+Renaming these by hand is tedious, so we have developed the `movpilot-series` utility.
+
+To use this utility, run
+
+```bash
+plex-footage-sorter movpilot-series
+```
+
+in the root directory.
