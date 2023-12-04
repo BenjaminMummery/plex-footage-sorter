@@ -24,16 +24,19 @@ class TestRestructure:
         # GIVEN
         series_name = "firefly"
         (tmp_path / series_name).mkdir()
-        (tmp_path / series_name / "1").mkdir()
-        (tmp_path / series_name / "1" / "firefly_S01E001_serenity.mp4").write_text(
-            "<sentinel>"
-        )
+        (old_subdir := (tmp_path / series_name / "1")).mkdir()
+        (
+            old_file := (tmp_path / series_name / "1" / "S01E001_serenity.mp4")
+        ).write_text("<sentinel>")
+        mocker.patch("sys.argv", ["stub_name", "movpilot-series"])
 
         # WHEN
         with cwd(tmp_path):
             main()
 
+        assert not old_file.exists()
         with open(
             tmp_path / series_name / "Season01" / "firefly - S01E01 - serenity.mp4"
         ) as f:
             assert f.read() == "<sentinel>"
+        assert not old_subdir.exists()

@@ -74,4 +74,4 @@ class TestCallingSortMovpilotSeries:
 
         # THEN
         mock_sort_dated_footage.assert_not_called()
-        mock_sort_movpilot_series.assert_called_once_with()
+        mock_sort_movpilot_series.assert_called_once_with(str(tmp_path))
