@@ -57,7 +57,7 @@ whereas Plex would expect these to look like:
 ```txt
 root
 └── Castlevania
-    ├── Season011
+    ├── Season01
     |   └── Castlevania - S01E01 - witchbottle.mp4
     └── Season02
         └── Castlevania - S02E02 - old homes.mp4
