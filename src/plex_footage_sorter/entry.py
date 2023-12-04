@@ -5,6 +5,8 @@
 import argparse
 import os
 
+from src import __version__
+
 from . import _sort_dated_footage_as_date_series, _sort_movpilot_series
 
 
@@ -13,6 +15,12 @@ def main():
 
     # Parse args
     parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "-V",
+        "--version",
+        action="version",
+        version=f"{__name__.split('.')[1].replace('_','-')} {__version__}",
+    )
 
     subparsers = parser.add_subparsers(required=True, dest="command")
     parser_date_based = subparsers.add_parser("date-based")
