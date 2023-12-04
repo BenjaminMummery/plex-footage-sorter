@@ -37,7 +37,7 @@ def main():
             os.getcwd(), args.title, recursive=args.recursive
         )
     elif args.command == "movpilot-series":
-        return _sort_movpilot_series.main()
+        return _sort_movpilot_series.main(os.getcwd())
 
 
 if __name__ == "__main__":
