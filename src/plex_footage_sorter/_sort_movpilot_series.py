@@ -45,13 +45,16 @@ def _discover_files(directory: Path) -> dict:
         print(".", end="")
         _, filename = os.path.split(file)
         filename, ext = os.path.splitext(filename)
-        m = re.match(r"^S(?P<season>\d{2})E(?P<episode>\d{3})_(?P<title>.*)$", filename)
-
+        match = re.match(
+            r"^S(?P<season>\d{2})E(?P<episode>\d{3})_(?P<title>.*)$", filename
+        )
+        if match is None:
+            continue
         outfiles.append(
             Episode(
-                int(m["season"]),
-                int(m["episode"]),
-                m["title"].replace("_", " "),
+                int(match["season"]),
+                int(match["episode"]),
+                match["title"].replace("_", " "),
                 ext,
                 file,
             )
