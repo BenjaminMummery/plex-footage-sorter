@@ -4,12 +4,15 @@ import os
 
 import pytest
 
+from src import __version__
+
 
 class TestSetup:
     @staticmethod
-    def test_install(virtualenv, tmp_path):
+    def test_install(virtualenv):
         virtualenv.run(f"python -m pip install {os.getcwd()}")
-        virtualenv.run(f"cd {tmp_path} && plex-footage-sorter date-based stub_title")
+        version_run: str = virtualenv.run("plex-footage-sorter --version", capture=True)
+        assert version_run.strip() == f"plex-footage-sorter {__version__}"
 
 
 @pytest.mark.parametrize("custom_name", ["'Training Videos'"])
