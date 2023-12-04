@@ -171,3 +171,39 @@ class TestAmazonPattern:
             / "Sleepy Hollow - S02E01 - This is War.mp4"
         ) as f:
             assert f.read() == "<sentinel>"
+
+    @staticmethod
+    def test_supplemental_files(tmp_path: Path, cwd, mocker: MockerFixture):
+        # GIVEN
+        series_name = "firefly"
+        (tmp_path / series_name).mkdir()
+        (tmp_path / series_name / "1").mkdir()
+        (tmp_path / series_name / "poster.jpeg").write_text("<poster sentinel>")
+        (tmp_path / series_name / "1" / "S01E001_serenity.mp4").write_text(
+            "<episode sentinel>"
+        )
+        (tmp_path / series_name / "1" / "S01E001_serenity.srt").write_text(
+            "<subtitles sentinel>"
+        )
+        (tmp_path / series_name / "1" / "season_poster.png").write_text(
+            "<season poster sentinel>"
+        )
+
+        mocker.patch("sys.argv", ["stub_name", "movpilot-series"])
+
+        # WHEN
+        with cwd(tmp_path):
+            main()
+
+        with open(tmp_path / series_name / "poster.jpeg") as f:
+            assert f.read() == "<poster sentinel>"
+        with open(
+            tmp_path / series_name / "Season01" / "firefly - S01E01 - serenity.mp4"
+        ) as f:
+            assert f.read() == "<episode sentinel>"
+        with open(
+            tmp_path / series_name / "Season01" / "firefly - S01E01 - serenity.srt"
+        ) as f:
+            assert f.read() == "<subtitles sentinel>"
+        with open(tmp_path / series_name / "Season01" / "season_poster.png") as f:
+            assert f.read() == "<season poster sentinel>"
