@@ -126,9 +126,11 @@ def main(directory: str):
         subdirs = next(os.walk(filedir))[1]
         for episode in episodes:
             # Create season subdir if it doesn't already exist
-            if (season_subdir := f"Season{episode.season:02d}") not in subdirs and not (_directory / series_name / season_subdir).exists() :
+            if (season_subdir := f"Season{episode.season:02d}") not in subdirs and not (
+                _directory / series_name / season_subdir
+            ).exists():
                 os.mkdir(_directory / series_name / season_subdir)
-                
+
             # move / rename episode
             new_filename = (
                 _directory

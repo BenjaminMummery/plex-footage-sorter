@@ -319,7 +319,7 @@ class TestRunPattern:
                 assert f.read() == "<subtitles sentinel>"
             with open(tmp_path / series_name / "Season01" / "season_poster.png") as f:
                 assert f.read() == "<season poster sentinel>"
-                
+
         @staticmethod
         def test_preexisting_subdir(
             tmp_path: Path, cwd, mocker: MockerFixture, season_dir_format: str
@@ -431,5 +431,3 @@ class TestRunPattern:
                 assert f.read() == "<sentinel>"
             assert not old_subdir_1.exists()
             assert not old_subdir_2.exists()
-            
-            
