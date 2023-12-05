@@ -47,9 +47,14 @@ For example, downloads from Amazon Prime follow the structure:
 root
 └── Castlevania
     ├── 1
-    |   └── S01E001_witchbottle.mp4
+    |   ├── Witchbottle
+    |   |   └── S01E001_witchbottle.mp4
+    |   └── Necropolis
+    |       └── S01E002_necropolis.mp4
+    |       └── S01E002_necropolis.srt
     └── 2
-        └── S02E002_old_homes.mp4
+        └── Old Homes
+            └── S02E002_old_homes.mp4
 ```
 
 and netflix downloads:
@@ -71,7 +76,9 @@ whereas Plex would expect these to look like:
 root
 └── Castlevania
     ├── Season01
-    |   └── Castlevania - S01E01 - witchbottle.mp4
+    |   ├── Castlevania - S01E01 - witchbottle.mp4
+    |   ├── Castlevania - S01E02 - necropolis.mp4
+    |   └── Castlevania - S01E02 - necropolis.srt
     └── Season02
         └── Castlevania - S02E02 - old homes.mp4
 ```
