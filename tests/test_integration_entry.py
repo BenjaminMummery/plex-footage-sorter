@@ -1,5 +1,7 @@
 # Copyright (c) 2023 Benjamin Mummery
 
+from typing import List
+
 import pytest
 from pytest_mock import MockerFixture
 
@@ -7,9 +9,9 @@ from src.plex_footage_sorter.entry import main
 
 
 class TestFailureStates:
-    @pytest.mark.parametrize("command", [["date-based"], ["movpilot-series", "name"]])
     @staticmethod
-    def test_missing_directory(tmp_path, mocker: MockerFixture, command: list):
+    @pytest.mark.parametrize("command", [["date-based", "name"], ["movpilot-series"]])
+    def test_missing_directory(command: List[str], tmp_path, mocker: MockerFixture):
         # GIVEN
         fake_subdir = "fake_subdir"
         mocker.patch(
