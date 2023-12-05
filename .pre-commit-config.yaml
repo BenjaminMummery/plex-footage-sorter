@@ -39,7 +39,7 @@ repos:
       - id: check-shebang-scripts-are-executable
 
   - repo: https://github.com/commitizen-tools/commitizen
-    rev: 3.12.0
+    rev: v3.13.0
     hooks:
       - id: commitizen
 
@@ -112,12 +112,12 @@ repos:
       - id: rm-unneeded-f-str
 
   - repo: https://github.com/psf/black
-    rev: 23.7.0
+    rev: 23.11.0
     hooks:
       - id: black
 
   - repo: https://github.com/charliermarsh/ruff-pre-commit
-    rev: 'v0.1.5'
+    rev: 'v0.1.7'
     hooks:
       - id: ruff
         args: [--fix, --exit-non-zero-on-fix]
@@ -158,7 +158,7 @@ repos:
       - id: check-yaml
 
   - repo: https://github.com/lyz-code/yamlfix
-    rev: 1.15.0
+    rev: 1.16.0
     hooks:
       - id: yamlfix
         exclude: .pre-commit-config.yaml
