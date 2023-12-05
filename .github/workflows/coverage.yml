@@ -10,7 +10,7 @@ concurrency:
   cancel-in-progress: true
 jobs:
   TestCoverage:
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, ubuntu-latest]
     steps:
       - uses: actions/checkout@v3
         with:
