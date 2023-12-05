@@ -52,6 +52,19 @@ root
         └── S02E002_old_homes.mp4
 ```
 
+and netflix downloads:
+
+```txt
+root
+└── Castlevania
+    ├── Season 1
+    |   └── Witchbottle
+    |       └── S01E001_witchbottle.mp4
+    └── Season 2
+        └── Old Homes
+            └── S02E002_old_homes.mp4
+```
+
 whereas Plex would expect these to look like:
 
 ```txt
