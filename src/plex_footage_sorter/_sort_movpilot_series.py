@@ -3,6 +3,7 @@
 """Move anr rename Movpilot Series files into plex-friendly patterns."""
 
 
+import logging
 import os
 import re
 from dataclasses import dataclass
@@ -100,7 +101,18 @@ def main(directory: str):
     for series_name in next(os.walk(_directory))[1]:
         # Rename season subdirs
         for subdir in next(os.walk(_directory / series_name))[1]:
-            season_no = int(subdir)
+            season_no: int
+            try:
+                season_no = int(subdir)
+            except ValueError:
+                match = re.match(r"^season\s*(?P<number>\d+)", subdir, re.IGNORECASE)
+                if match is None:
+                    logging.warning(
+                        f"Subdirectory '{subdir}' does not conform to a recognised "
+                        "naming pattern and will be ignored."
+                    )
+                    continue
+                season_no = int(match["number"])
             os.rename(
                 _directory / series_name / subdir,
                 _directory / series_name / f"Season{season_no:02d}",
