@@ -28,7 +28,7 @@ class TestNullCases:
         main()
 
 
-@pytest.mark.parametrize("season_dir_format", ["{number}"])
+@pytest.mark.parametrize("season_dir_format", ["{number}", "Season {number}"])
 class TestRunPattern:
     class TestDefaultDirectory:
         @staticmethod
