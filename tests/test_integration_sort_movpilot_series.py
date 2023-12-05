@@ -28,14 +28,21 @@ class TestNullCases:
         main()
 
 
-class TestAmazonPattern:
+@pytest.mark.parametrize("season_dir_format", ["{number}"])
+class TestRunPattern:
     class TestDefaultDirectory:
         @staticmethod
-        def test_single_file(tmp_path: Path, cwd, mocker: MockerFixture):
+        def test_single_file(
+            tmp_path: Path, cwd, mocker: MockerFixture, season_dir_format: str
+        ):
             # GIVEN
             series_name = "firefly"
             (tmp_path / series_name).mkdir()
-            (old_season_subdir := (tmp_path / series_name / "1")).mkdir()
+            (
+                old_season_subdir := (
+                    tmp_path / series_name / season_dir_format.format(number="1")
+                )
+            ).mkdir()
             (old_episode_subdir := (old_season_subdir / "Serenity")).mkdir()
             (old_file := (old_episode_subdir / "S01E001_serenity.mp4")).write_text(
                 "<sentinel>"
@@ -56,15 +63,25 @@ class TestAmazonPattern:
             assert not old_episode_subdir.exists()
 
         @staticmethod
-        def test_multiple_files(tmp_path: Path, cwd, mocker: MockerFixture):
+        def test_multiple_files(
+            tmp_path: Path, cwd, mocker: MockerFixture, season_dir_format: str
+        ):
             # GIVEN
             series_name = "Star Trek (1966)"
 
             # Create file structure
             old_subdirs: List[Path] = []
             (tmp_path / series_name).mkdir()
-            old_subdirs.append(s1_subdir := (tmp_path / series_name / "1"))
-            old_subdirs.append(s2_subdir := (tmp_path / series_name / "2"))
+            old_subdirs.append(
+                s1_subdir := (
+                    tmp_path / series_name / season_dir_format.format(number="1")
+                )
+            )
+            old_subdirs.append(
+                s2_subdir := (
+                    tmp_path / series_name / season_dir_format.format(number="2")
+                )
+            )
             old_subdirs.append(s1e1_subdir := (s1_subdir / "The Man Trap"))
             old_subdirs.append(s1e2_subdir := (s1_subdir / "Charlie X"))
             old_subdirs.append(s2e1_subdir := (s2_subdir / "Amok Time"))
@@ -107,7 +124,9 @@ class TestAmazonPattern:
                     assert f.read() == f"<sentinel {i}>"
 
         @staticmethod
-        def test_multiple_series(tmp_path: Path, cwd, mocker: MockerFixture):
+        def test_multiple_series(
+            tmp_path: Path, cwd, mocker: MockerFixture, season_dir_format: str
+        ):
             # GIVEN
             # Create file structure
             old_subdirs: List[Path] = []
@@ -115,9 +134,17 @@ class TestAmazonPattern:
             series_name_2 = "Doctor Who (2005)"
             (tmp_path / series_name_1).mkdir()
             (tmp_path / series_name_2).mkdir()
-            old_subdirs.append(f_s1_subdir := (tmp_path / series_name_1 / "1"))
+            old_subdirs.append(
+                f_s1_subdir := (
+                    tmp_path / series_name_1 / season_dir_format.format(number="1")
+                )
+            )
             old_subdirs.append(f_s1e1_subdir := (f_s1_subdir / "Serenity"))
-            old_subdirs.append(dw_s1_subdir := (tmp_path / series_name_2 / "1"))
+            old_subdirs.append(
+                dw_s1_subdir := (
+                    tmp_path / series_name_2 / season_dir_format.format(number="1")
+                )
+            )
             old_subdirs.append(dw_s1e1_subdir := (dw_s1_subdir / "Rose"))
             for dir in old_subdirs:
                 dir.mkdir()
@@ -154,13 +181,17 @@ class TestAmazonPattern:
 
         @staticmethod
         def test_misfiled_episode_wrong_season(
-            tmp_path: Path, cwd, mocker: MockerFixture
+            tmp_path: Path, cwd, mocker: MockerFixture, season_dir_format: str
         ):
             # GIVEN
             series_name = "Sleepy Hollow"
             (tmp_path / series_name).mkdir()
             old_subdirs: List[Path] = []
-            old_subdirs.append(s1_subdir := (tmp_path / series_name / "1"))
+            old_subdirs.append(
+                s1_subdir := (
+                    tmp_path / series_name / season_dir_format.format(number="1")
+                )
+            )
             old_subdirs.append(s1e1_subdir := (s1_subdir / "This is War"))
             for dir in old_subdirs:
                 dir.mkdir()
@@ -190,7 +221,7 @@ class TestAmazonPattern:
 
         @staticmethod
         def test_misfiled_episode_not_in_season(
-            tmp_path: Path, cwd, mocker: MockerFixture
+            tmp_path: Path, cwd, mocker: MockerFixture, season_dir_format: str
         ):
             # GIVEN
             series_name = "Sleepy Hollow"
@@ -214,21 +245,32 @@ class TestAmazonPattern:
                 assert f.read() == "<sentinel>"
 
         @staticmethod
-        def test_supplemental_files(tmp_path: Path, cwd, mocker: MockerFixture):
+        def test_supplemental_files(
+            tmp_path: Path, cwd, mocker: MockerFixture, season_dir_format: str
+        ):
             # GIVEN
             series_name = "firefly"
             (tmp_path / series_name).mkdir()
-            (tmp_path / series_name / "1").mkdir()
+            (tmp_path / series_name / season_dir_format.format(number="1")).mkdir()
             (tmp_path / series_name / "poster.jpeg").write_text("<poster sentinel>")
-            (tmp_path / series_name / "1" / "S01E001_serenity.mp4").write_text(
-                "<episode sentinel>"
-            )
-            (tmp_path / series_name / "1" / "S01E001_serenity.srt").write_text(
-                "<subtitles sentinel>"
-            )
-            (tmp_path / series_name / "1" / "season_poster.png").write_text(
-                "<season poster sentinel>"
-            )
+            (
+                tmp_path
+                / series_name
+                / season_dir_format.format(number="1")
+                / "S01E001_serenity.mp4"
+            ).write_text("<episode sentinel>")
+            (
+                tmp_path
+                / series_name
+                / season_dir_format.format(number="1")
+                / "S01E001_serenity.srt"
+            ).write_text("<subtitles sentinel>")
+            (
+                tmp_path
+                / series_name
+                / season_dir_format.format(number="1")
+                / "season_poster.png"
+            ).write_text("<season poster sentinel>")
 
             mocker.patch("sys.argv", ["stub_name", "movpilot-series"])
 
@@ -253,12 +295,20 @@ class TestAmazonPattern:
     class TestCustomDirectory:
         @staticmethod
         def test_absolute_dir(
-            tmp_path: Path, cwd, mocker: MockerFixture, directory_arg: str
+            tmp_path: Path,
+            cwd,
+            mocker: MockerFixture,
+            directory_arg: str,
+            season_dir_format: str,
         ):
             # GIVEN
             series_name = "firefly"
             (tmp_path / series_name).mkdir()
-            (old_subdir_1 := (tmp_path / series_name / "1")).mkdir()
+            (
+                old_subdir_1 := (
+                    tmp_path / series_name / season_dir_format.format(number="1")
+                )
+            ).mkdir()
             (old_subdir_2 := (old_subdir_1 / "Serenity")).mkdir()
             (old_file := (old_subdir_2 / "S01E001_serenity.mp4")).write_text(
                 "<sentinel>"
@@ -282,13 +332,21 @@ class TestAmazonPattern:
 
         @staticmethod
         def test_relative_dir(
-            tmp_path: Path, cwd, mocker: MockerFixture, directory_arg: str
+            tmp_path: Path,
+            cwd,
+            mocker: MockerFixture,
+            directory_arg: str,
+            season_dir_format: str,
         ):
             # GIVEN
             series_name = "firefly"
             (subdir_path := (tmp_path / "subdir")).mkdir()
             (subdir_path / series_name).mkdir()
-            (old_subdir_1 := (subdir_path / series_name / "1")).mkdir()
+            (
+                old_subdir_1 := (
+                    subdir_path / series_name / season_dir_format.format(number="1")
+                )
+            ).mkdir()
             (old_subdir_2 := (old_subdir_1 / "Serenity")).mkdir()
             (old_file := (old_subdir_2 / "S01E001_serenity.mp4")).write_text(
                 "<sentinel>"
