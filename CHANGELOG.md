@@ -2,6 +2,29 @@
 
 
 
+## v4.3.0 (2023-12-05)
+
+### Documentation
+
+* docs: update readme. ([`f771487`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/f7714875c895f2f070d1d7e28229a31449041881))
+
+* docs: update docs ([`fd0dd04`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/fd0dd0414838f66cb96688eeabaeef313a3eb7ed))
+
+### Feature
+
+* feat: handle netflix style series structures. ([`7314457`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/7314457aed71f1ed4597d61110b38354360ee223))
+
+### Refactor
+
+* refactor: adjust tests for multiple subdir formats. ([`c756445`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/c7564459cfd06b79421fb81970c80139966d31e1))
+
+### Test
+
+* test: add test for non-matching subdir names. ([`49eac5d`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/49eac5d25972dc9a67bc60c56030fdcaeeced522))
+
+* test: add tests for netflix-pattern directory structures. ([`1f664e6`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/1f664e67a3e712fc83cf5226acb781b320bb2c7e))
+
+
 ## v4.2.0 (2023-12-05)
 
 ### Chore
