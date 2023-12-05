@@ -2,6 +2,23 @@
 
 
 
+## v4.3.1 (2023-12-05)
+
+### Fix
+
+* fix: handle preexisting season subdir. ([`22713d4`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/22713d4985ed5a56be922d8a6152fa1c7f2e0e23))
+
+### Style
+
+* style: fix style ([`896de4c`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/896de4cce19e4485016b3716d5fd62d8fdd04da8))
+
+### Unknown
+
+* Merge pull request #31 from BenjaminMummery/fix-allow-preexisting-subdirs
+
+fix: handle preexisting season subdir. ([`60a2aba`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/60a2abaf6839b0a735b7f00e2e4d3ac646b274c8))
+
+
 ## v4.3.0 (2023-12-05)
 
 ### Documentation
