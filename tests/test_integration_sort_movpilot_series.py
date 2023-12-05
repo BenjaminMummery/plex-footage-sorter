@@ -319,6 +319,38 @@ class TestRunPattern:
                 assert f.read() == "<subtitles sentinel>"
             with open(tmp_path / series_name / "Season01" / "season_poster.png") as f:
                 assert f.read() == "<season poster sentinel>"
+                
+        @staticmethod
+        def test_preexisting_subdir(
+            tmp_path: Path, cwd, mocker: MockerFixture, season_dir_format: str
+        ):
+            # GIVEN
+            series_name = "firefly"
+            (tmp_path / series_name).mkdir()
+            (tmp_path / series_name / "Season01").mkdir()
+            (
+                old_season_subdir := (
+                    tmp_path / series_name / season_dir_format.format(number="1")
+                )
+            ).mkdir()
+            (old_episode_subdir := (old_season_subdir / "Serenity")).mkdir()
+            (old_file := (old_episode_subdir / "S01E001_serenity.mp4")).write_text(
+                "<sentinel>"
+            )
+
+            mocker.patch("sys.argv", ["stub_name", "movpilot-series"])
+
+            # WHEN
+            with cwd(tmp_path):
+                main()
+
+            assert not old_file.exists()
+            with open(
+                tmp_path / series_name / "Season01" / "firefly - S01E01 - serenity.mp4"
+            ) as f:
+                assert f.read() == "<sentinel>"
+            assert not old_season_subdir.exists()
+            assert not old_episode_subdir.exists()
 
     @pytest.mark.parametrize("directory_arg", ["-d", "--directory"])
     class TestCustomDirectory:
@@ -399,3 +431,5 @@ class TestRunPattern:
                 assert f.read() == "<sentinel>"
             assert not old_subdir_1.exists()
             assert not old_subdir_2.exists()
+            
+            
