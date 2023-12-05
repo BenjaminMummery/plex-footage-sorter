@@ -245,6 +245,35 @@ class TestRunPattern:
                 assert f.read() == "<sentinel>"
 
         @staticmethod
+        def test_misfiled_episode_misnamed_season(
+            tmp_path: Path, cwd, mocker: MockerFixture, season_dir_format: str
+        ):
+            # GIVEN
+            series_name = "Sleepy Hollow"
+            subdir_name = "some_random_nonsense"
+            (tmp_path / series_name).mkdir()
+            (tmp_path / series_name / subdir_name).mkdir()
+            (
+                old_file := (
+                    tmp_path / series_name / subdir_name / "S02E001_This_is_War.mp4"
+                )
+            ).write_text("<sentinel>")
+            mocker.patch("sys.argv", ["stub_name", "movpilot-series"])
+
+            # WHEN
+            with cwd(tmp_path):
+                main()
+
+            assert not old_file.exists()
+            with open(
+                tmp_path
+                / series_name
+                / "Season02"
+                / "Sleepy Hollow - S02E01 - This is War.mp4"
+            ) as f:
+                assert f.read() == "<sentinel>"
+
+        @staticmethod
         def test_supplemental_files(
             tmp_path: Path, cwd, mocker: MockerFixture, season_dir_format: str
         ):
