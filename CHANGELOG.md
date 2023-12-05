@@ -2,6 +2,49 @@
 
 
 
+## v4.2.0 (2023-12-05)
+
+### Chore
+
+* chore: bump pytest version. ([`27f5f01`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/27f5f019b9d678d36984d854b6c7410a1e872c6d))
+
+### Ci
+
+* ci: enable self-hosted runner. ([`2ba284b`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/2ba284bfae446ad11ff531143819107487a4b20b))
+
+### Documentation
+
+* docs: fix typo in README.
+
+&#39;Season011&#39; should actually be &#39;Season01&#39;. ([`1df53a0`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/1df53a010cc0d054e5b2c2559d84fc0e4b4aad55))
+
+### Feature
+
+* feat: delete empty subdirs when done. ([`05516b0`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/05516b05fbeed8329eb4e22259fd91a34ed2ded2))
+
+* feat: implement custom directory arg. ([`4f8978b`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/4f8978b8c5977468f30e677ed0b6c7192675a4ff))
+
+### Fix
+
+* fix: correct &#39;title&#39; arg for wrong command in test. ([`75eabd0`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/75eabd0e76a88c86c12ba2ca7ee9f75bc096ecb6))
+
+### Style
+
+* style: apply style rules to actions yaml. ([`0c83cd8`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/0c83cd82db7f2d32c3bedab1b26ced9f3f643c48))
+
+### Test
+
+* test: update tests for subdir structure. ([`9f6da8b`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/9f6da8b334c73333c508c403f0f5141c223257d2))
+
+* test: add tests for custom directory argument. ([`a9b2d7d`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/a9b2d7d7434f9c06824d6df5ff47c3b760b53476))
+
+### Unknown
+
+* Revert &#34;ci: enable self-hosted runner.&#34;
+
+This reverts commit d9a43b399ca50a80234c7fcd1214bbba68f6b317. ([`fce7e03`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/fce7e033522b65979f4e7a40161c9b1ea1481dc7))
+
+
 ## v4.1.0 (2023-12-04)
 
 ### Feature

@@ -178,3 +178,25 @@ class TestSubDirs:
         ), f"{expected_outpath}\n{os.listdir(tmp_path / subdir)}"
         with open(expected_outpath, "r") as f:
             assert f.read() == "<sentinel>"
+
+
+@pytest.mark.parametrize("directory_arg", ["-d", "--directory"])
+class TestCustomDirectory:
+    @staticmethod
+    def test_absolute_dir(tmp_path: Path, mocker: MockerFixture, directory_arg: str):
+        # GIVEN
+        custom_name = "foo"
+        filename = "20220202_222222.mp4"
+        (tmp_path / filename).write_text("<sentinel>")
+
+        mocker.patch(
+            "sys.argv",
+            ["stub_name", directory_arg, str(tmp_path), "date-based", custom_name],
+        )
+
+        # WHEN
+        main()
+
+        # THEN
+        with open(tmp_path / f"{custom_name} - 2022-02-02.mp4", "r") as f:
+            assert f.read() == "<sentinel>"

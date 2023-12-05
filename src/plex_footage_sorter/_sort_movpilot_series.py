@@ -75,9 +75,11 @@ def main(directory: str):
             directory
             ├── Castlevania
             |   ├── 1
-            |   |   └── S01E001_witchbottle.mp4
+            |   |   └── Witchbottle
+            |   |       └── S01E001_witchbottle.mp4
             |   └── 2
-            |       └── S02E002_old_homes.mp4
+            |       └── Old Homes
+            |           └── S02E002_old_homes.mp4
             └── Goblin Slayer
                 └── S01E001_The_goblin_crown.mp4
             ```
@@ -95,8 +97,7 @@ def main(directory: str):
             ```
     """
     _directory: Path = Path(directory)
-
-    for series_name in next(os.walk("."))[1]:
+    for series_name in next(os.walk(_directory))[1]:
         # Rename season subdirs
         for subdir in next(os.walk(_directory / series_name))[1]:
             season_no = int(subdir)
@@ -129,3 +130,15 @@ def main(directory: str):
             )
             print(f"{episode.path} --> {new_filename}")
             os.rename(episode.path, new_filename)
+
+        # Remove empty subdirs
+        deleted = set()
+        for current_dir, subdirs, files in os.walk(_directory, topdown=False):
+            still_has_subdirs = False
+            for subdir in subdirs:
+                if os.path.join(current_dir, subdir) not in deleted:
+                    still_has_subdirs = True
+                    break
+            if not any(files) and not still_has_subdirs:
+                os.rmdir(current_dir)
+                deleted.add(current_dir)
