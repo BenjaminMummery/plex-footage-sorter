@@ -1,6 +1,7 @@
-# Copyright (c) 2023 Benjamin Mummery
+# Copyright (c) 2023 - 2024 Benjamin Mummery
 
 from pathlib import Path
+from unittest.mock import Mock
 
 import pytest
 from pytest_mock import MockerFixture
@@ -14,8 +15,9 @@ class TestCallingSortDatedFootage:
         cwd,
         tmp_path: Path,
         mocker: MockerFixture,
-        mock_sort_dated_footage,
-        mock_sort_movpilot_series,
+        mock_sort_dated_footage: Mock,
+        mock_sort_movpilot_series: Mock,
+        mock_rename: Mock,
     ):
         # GIVEN
         mocker.patch("sys.argv", ["stub_name", "date-based", "<title sentinel>"])
@@ -29,6 +31,7 @@ class TestCallingSortDatedFootage:
             str(tmp_path), "<title sentinel>", recursive=False
         )
         mock_sort_movpilot_series.assert_not_called()
+        mock_rename.assert_not_called()
 
     @staticmethod
     @pytest.mark.parametrize("recursive_arg", ["-r", "--recursive"])
@@ -36,8 +39,9 @@ class TestCallingSortDatedFootage:
         cwd,
         tmp_path: Path,
         mocker: MockerFixture,
-        mock_sort_dated_footage,
-        mock_sort_movpilot_series,
+        mock_sort_dated_footage: Mock,
+        mock_sort_movpilot_series: Mock,
+        mock_rename: Mock,
         recursive_arg: str,
     ):
         # GIVEN
@@ -54,6 +58,7 @@ class TestCallingSortDatedFootage:
             str(tmp_path), "<title sentinel>", recursive=True
         )
         mock_sort_movpilot_series.assert_not_called()
+        mock_rename.assert_not_called()
 
 
 class TestCallingSortMovpilotSeries:
@@ -62,8 +67,9 @@ class TestCallingSortMovpilotSeries:
         cwd,
         tmp_path: Path,
         mocker: MockerFixture,
-        mock_sort_dated_footage,
-        mock_sort_movpilot_series,
+        mock_sort_dated_footage: Mock,
+        mock_sort_movpilot_series: Mock,
+        mock_rename: Mock,
     ):
         # GIVEN
         mocker.patch("sys.argv", ["stub_name", "movpilot-series"])
@@ -75,3 +81,4 @@ class TestCallingSortMovpilotSeries:
         # THEN
         mock_sort_dated_footage.assert_not_called()
         mock_sort_movpilot_series.assert_called_once_with(str(tmp_path))
+        mock_rename.assert_not_called()
