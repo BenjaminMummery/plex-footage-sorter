@@ -82,3 +82,30 @@ class TestCallingSortMovpilotSeries:
         mock_sort_dated_footage.assert_not_called()
         mock_sort_movpilot_series.assert_called_once_with(str(tmp_path))
         mock_rename.assert_not_called()
+
+
+class TestCallingRename:
+    @staticmethod
+    def test_arg_passing(
+        cwd,
+        tmp_path,
+        mocker: MockerFixture,
+        mock_sort_dated_footage: Mock,
+        mock_sort_movpilot_series: Mock,
+        mock_rename: Mock,
+    ):
+        # GIVEN
+        mocker.patch(
+            "sys.argv", ["stub_name", "rename", "<match sentinel>", "<target sentinel>"]
+        )
+
+        # WHEN
+        with cwd(tmp_path):
+            main()
+
+        # THEN
+        mock_sort_dated_footage.assert_not_called()
+        mock_sort_movpilot_series.assert_not_called()
+        mock_rename.assert_called_once_with(
+            str(tmp_path), "<match sentinel>", "<target sentinel>"
+        )
