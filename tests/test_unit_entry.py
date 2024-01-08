@@ -1,6 +1,7 @@
 # Copyright (c) 2023 - 2024 Benjamin Mummery
 
 from pathlib import Path
+from typing import List
 from unittest.mock import Mock
 
 import pytest
@@ -121,3 +122,41 @@ class TestCallingRename:
         mock_rename.assert_called_once_with(
             str(tmp_path), "<match sentinel>", "<target sentinel>", parsed_regex_arg
         )
+
+    @staticmethod
+    @pytest.mark.parametrize(
+        "args, missing",
+        [
+            (
+                [
+                    "<match sentinel>",
+                ],
+                "target",
+            ),
+            ([], "match, target"),
+        ],
+    )
+    def test_raises_exception_for_missing_args(
+        cwd,
+        tmp_path,
+        mocker: MockerFixture,
+        mock_rename: Mock,
+        args: List[str],
+        missing: str,
+        capsys: pytest.CaptureFixture,
+    ):
+        # GIVEN
+        mocker.patch(
+            "sys.argv",
+            ["stub_name", "rename"] + args,
+        )
+
+        # THEN
+        with cwd(tmp_path):
+            with pytest.raises(SystemExit):
+                main()
+
+        captured = capsys.readouterr()
+        assert captured.out == ""
+        assert f"error: the following arguments are required: {missing}" in captured.err
+        mock_rename.assert_not_called()
