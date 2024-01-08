@@ -90,8 +90,6 @@ def main():
     args: argparse.Namespace = parser.parse_args()
     args.directory = _resolve_path(args.directory)
 
-    print(args)
-
     if args.command == "date-based":
         return _sort_dated_footage_as_date_series.main(
             args.directory, args.title, recursive=args.recursive
