@@ -1,5 +1,6 @@
 # Copyright (c) 2023 - 2024 Benjamin Mummery
 
+import os
 from pathlib import Path
 from typing import List
 from unittest.mock import Mock
@@ -160,3 +161,52 @@ class TestCallingRename:
         assert captured.out == ""
         assert f"error: the following arguments are required: {missing}" in captured.err
         mock_rename.assert_not_called()
+
+
+class TestSharedLogic:
+    class TestDirectoryArg:
+        @staticmethod
+        def test_relative_path(
+            cwd, tmp_path: Path, mock_sort_movpilot_series: Mock, mocker
+        ):
+            # GIVEN
+            tmp_dir = "temp_dir"
+            mocker.patch("sys.argv", ["stub_name", "-d", tmp_dir, "movpilot-series"])
+            os.mkdir(tmp_path / tmp_dir)
+
+            # WHEN
+            with cwd(tmp_path):
+                main()
+
+            # THEN
+            mock_sort_movpilot_series.assert_called_once_with(str(tmp_path / tmp_dir))
+
+        @staticmethod
+        def test_absolute_path(tmp_path: Path, mock_sort_movpilot_series: Mock, mocker):
+            # GIVEN
+            mocker.patch(
+                "sys.argv", ["stub_name", "-d", str(tmp_path), "movpilot-series"]
+            )
+
+            # WHEN
+            main()
+
+            # THEN
+            mock_sort_movpilot_series.assert_called_once_with(str(tmp_path))
+
+        @staticmethod
+        def test_raises_filenotfounderror_for_missing_dir(
+            cwd, tmp_path: Path, mock_sort_movpilot_series: Mock, mocker
+        ):
+            # GIVEN
+            tmp_dir = "temp_dir"
+            mocker.patch("sys.argv", ["stub_name", "-d", tmp_dir, "movpilot-series"])
+
+            # WHEN
+            with cwd(tmp_path):
+                with pytest.raises(FileNotFoundError) as e:
+                    main()
+            assert e.exconly() == (
+                f"FileNotFoundError: Directory '{tmp_path / tmp_dir}' "
+                "does not exist."
+            )
