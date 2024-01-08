@@ -61,6 +61,13 @@ def _make_parser() -> argparse.ArgumentParser:
     rename_parser.add_argument(
         "target", type=str, help="The pattern to which input files will be renamed."
     )
+    rename_parser.add_argument(
+        "--regex",
+        "-R",
+        action="store_true",
+        default=False,
+        help="Use regex matching rather than glob.",
+    )
 
     return parser
 
@@ -92,7 +99,7 @@ def main():
     elif args.command == "movpilot-series":
         return _sort_movpilot_series.main(args.directory)
     elif args.command == "rename":
-        return _rename.main(args.directory, args.match, args.target)
+        return _rename.main(args.directory, args.match, args.target, args.regex)
 
 
 if __name__ == "__main__":
