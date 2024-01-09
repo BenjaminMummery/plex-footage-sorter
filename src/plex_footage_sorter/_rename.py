@@ -94,6 +94,38 @@ def _convert_glob_to_format_string(pattern: str) -> str:
     return "".join(chars)
 
 
+def _check_consistent_wildcards(pattern_1: str, pattern_2: str):
+    """Raise an exception if the two patterns have different wildcards.
+
+    Args:
+        pattern_1 (str): A pattern containing one or more glob strings to be checked.
+        pattern_2 (str): A pattern containing one or more glob strings to be checked.
+
+    Raises:
+        ValueError: when there are mismatching wildcards between the patterns.
+    """
+    glob_wildcards: List[str] = ["*", "?", "["]
+
+    p1_chars: List[str] = []
+    for char in pattern_1:
+        if char in glob_wildcards:
+            p1_chars.append(char)
+    p2_chars: List[str] = []
+    for char in pattern_2:
+        if char in glob_wildcards:
+            p2_chars.append(char)
+
+    if p1_chars == p2_chars:
+        return
+
+    for char1, char2 in zip(p1_chars, p2_chars):
+        if char1 != char2:
+            raise ValueError(
+                "Mismatching glob wildcards between input and output patterns "
+                f"'{pattern_1}' and '{pattern_2}': '{char1}' vs '{char2}'."
+            )
+
+
 def main(directory: str, match_pattern: str, target_pattern: str):
     """Find and rename matching files.
 
@@ -104,6 +136,8 @@ def main(directory: str, match_pattern: str, target_pattern: str):
         regex (bool): If True, interpret the match and target patterns using regex. If
             False, glob will be used. Defaults to False.
     """
+    _check_consistent_wildcards(match_pattern, target_pattern)
+
     if (
         len(
             files := _discover_files(
