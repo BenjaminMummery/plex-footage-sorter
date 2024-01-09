@@ -2,6 +2,7 @@
 
 from pathlib import Path
 
+import pytest
 from pytest_mock import MockerFixture
 
 from src.plex_footage_sorter.entry import main
@@ -155,3 +156,24 @@ class TestQuestionmarkWildcard:
         assert nonmatching_file.is_file()
         with open(nonmatching_file) as f:
             assert f.read() == "<sentinel>"
+
+
+class TestFailureStates:
+    @staticmethod
+    def test_unsupported_glob_wildcard(tmp_path: Path, cwd, mocker: MockerFixture):
+        # GIVEN
+        (tmp_path / "episode_a.mkv").write_text("<sentinel>")
+        mocker.patch(
+            "sys.argv", ["stub_name", "rename", "episode_[a].mkv", "S01E0[a].mkv"]
+        )
+
+        # WHEN
+        with cwd(tmp_path):
+            with pytest.raises(NotImplementedError) as e:
+                main()
+
+        # THEN
+        assert e.exconly() == (
+            "NotImplementedError: Pattern 'episode_[a].mkv' contains glob wildcards "
+            "that are not yet supported."
+        )
