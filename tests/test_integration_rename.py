@@ -33,11 +33,9 @@ class TestNullCases:
             assert (tmp_path / file).is_file()
 
 
-class TestGlob:
+class TestStarWildcard:
     @staticmethod
-    def test_renames_single_file_correctly_star_wildcard(
-        tmp_path: Path, cwd, mocker: MockerFixture
-    ):
+    def test_rename_single_file(tmp_path: Path, cwd, mocker: MockerFixture):
         # GIVEN
         (tmp_path / (filename := "episode_1.mkv")).write_text("<sentinel>")
         mocker.patch("sys.argv", ["stub_name", "rename", "episode_*", "S01E0*"])
@@ -52,10 +50,10 @@ class TestGlob:
         with open(new_file) as f:
             assert f.read() == "<sentinel>"
 
+
+class TestQuestionmarkWildcard:
     @staticmethod
-    def test_renames_single_file_correctly_question_mark_wildcard(
-        tmp_path: Path, cwd, mocker: MockerFixture
-    ):
+    def test_rename_single_file(tmp_path: Path, cwd, mocker: MockerFixture):
         # GIVEN
         (tmp_path / (filename := "episode_1.mkv")).write_text("<sentinel>")
         mocker.patch("sys.argv", ["stub_name", "rename", "episode_?.mkv", "S01E0?.mkv"])
