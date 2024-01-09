@@ -2,6 +2,71 @@
 
 
 
+## v4.4.0 (2024-01-09)
+
+### Chore
+
+* chore: remove extranious print. ([`45a70c1`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/45a70c138973470286e1afade76de44570e3c741))
+
+### Feature
+
+* feat: handle multiple wildcards. ([`34f4877`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/34f48777c57731c7c40c3ea1cd3f155855e7c455))
+
+* feat: throw an exception for mismatching wildcards. ([`bc34a0f`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/bc34a0f0e3559b5ddbb6642c4a28ec0ebf7fe95b))
+
+* feat: remove regex arg. ([`1ad512d`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/1ad512d68e000d507205d32155f553dd7152ce7a))
+
+* feat: handle ? wildcards. ([`4b72a3d`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/4b72a3db54a5ed603b7d0b5730e0b50ccf332c0c))
+
+* feat: rename with single * wildcard. ([`b83efb2`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/b83efb29da0710d42d116f512e23a60602cacc6e))
+
+* feat: handle args to rename. ([`cd1d40c`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/cd1d40c45e619f7e903e21fcdf41b41bbd2b90a8))
+
+* feat: pass regex arg to rename. ([`5b1681f`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/5b1681f74ebdab9dccecd4415fae1984bf298f19))
+
+* feat: implement argument passing. ([`7cb557f`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/7cb557fc1240f87955415e31415c1d7eac65873b))
+
+* feat: placeholder rename method. ([`226bdfe`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/226bdfe67cfb2843f2ec27b83ba1438265f27a96))
+
+### Refactor
+
+* refactor: separate tests by wildcard. ([`c664c44`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/c664c44a4e79a224e1f5fd325f3c4ff1c1a1427f))
+
+### Test
+
+* test: add test for multiple wildcards. ([`a89c6dc`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/a89c6dc4f2e61f12de7506004795560deae6b28c))
+
+* test: add test for mismatching wildcards. ([`b653d89`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/b653d89e15b30571b762a07c4cbfcbaabb0d220c))
+
+* test: add test for unsupported glob wildcards. ([`527a14e`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/527a14ef820efe93600312a988041ad6c25529f5))
+
+* test: add tests for combinations of multiple files. ([`94ead0d`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/94ead0d49582d627a543c07840e3e495b4d5f997))
+
+* test: add test for ? wildcard. ([`37e32ed`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/37e32ede1ca036997bfde2124b1d9d14892f586c))
+
+* test: add test for renaming single file. ([`c86fab3`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/c86fab34bdc9c8a59b24cdb40519c57ba7fab4df))
+
+* test: add test for no matching files. ([`7729a1b`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/7729a1bfd126943b102581d7ce341a4d3263734c))
+
+* test: add test for null case - no files. ([`ec89fc7`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/ec89fc73198fe000aca1cd72a81472db15c6d41f))
+
+* test: add test for directory logic. ([`69eccda`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/69eccda697002197a9a1792775cc2f3fa9ea16f9))
+
+* test: add test for missing rename args. ([`ba25dda`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/ba25dda686ddbc7ef2ef822127145f08e6287ab4))
+
+* test: add test for passing regex argument to rename. ([`205c273`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/205c27342ea18abbd10494cef8d6b537de854c7e))
+
+* test: add test for arg passing to rename. ([`64c55dc`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/64c55dc6bf99f134fed5e539873f02535766c4a8))
+
+* test: add asserts that rename is not called when invoking other commands. ([`759ea16`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/759ea16850826cb7c203c7ace242e88e51c99843))
+
+### Unknown
+
+* Merge pull request #32 from BenjaminMummery/feat/renamer
+
+feat: renamer ([`c11ca7b`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/c11ca7b75c6e02ef54ece59a2f5ced5dbedf0fbf))
+
+
 ## v4.3.1 (2023-12-05)
 
 ### Fix
