@@ -1,4 +1,4 @@
-# Copyright (c) 2023 Benjamin Mummery
+# Copyright (c) 2023 - 2024 Benjamin Mummery
 
 import os
 from contextlib import contextmanager
@@ -37,3 +37,8 @@ def mock_sort_dated_footage(mocker: MockerFixture):
 @pytest.fixture
 def mock_sort_movpilot_series(mocker: MockerFixture):
     return mocker.patch("src.plex_footage_sorter._sort_movpilot_series.main", Mock())
+
+
+@pytest.fixture
+def mock_rename(mocker: MockerFixture):
+    return mocker.patch("src.plex_footage_sorter._rename.main", Mock())
