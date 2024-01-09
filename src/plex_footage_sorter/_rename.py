@@ -94,7 +94,7 @@ def _convert_glob_to_format_string(pattern: str) -> str:
     return "".join(chars)
 
 
-def main(directory: str, match_pattern: str, target_pattern: str, regex: bool):
+def main(directory: str, match_pattern: str, target_pattern: str):
     """Find and rename matching files.
 
     Args:

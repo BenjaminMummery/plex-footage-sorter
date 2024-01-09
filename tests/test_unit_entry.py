@@ -88,14 +88,6 @@ class TestCallingSortMovpilotSeries:
 
 class TestCallingRename:
     @staticmethod
-    @pytest.mark.parametrize(
-        "regex_arg, parsed_regex_arg",
-        [
-            (["--regex"], True),
-            (["-R"], True),
-            ([], False),
-        ],
-    )
     def test_arg_passing(
         cwd,
         tmp_path,
@@ -103,14 +95,10 @@ class TestCallingRename:
         mock_sort_dated_footage: Mock,
         mock_sort_movpilot_series: Mock,
         mock_rename: Mock,
-        regex_arg: str,
-        parsed_regex_arg: bool,
     ):
         # GIVEN
         mocker.patch(
-            "sys.argv",
-            ["stub_name", "rename", "<match sentinel>", "<target sentinel>"]
-            + regex_arg,
+            "sys.argv", ["stub_name", "rename", "<match sentinel>", "<target sentinel>"]
         )
 
         # WHEN
@@ -121,7 +109,7 @@ class TestCallingRename:
         mock_sort_dated_footage.assert_not_called()
         mock_sort_movpilot_series.assert_not_called()
         mock_rename.assert_called_once_with(
-            str(tmp_path), "<match sentinel>", "<target sentinel>", parsed_regex_arg
+            str(tmp_path), "<match sentinel>", "<target sentinel>"
         )
 
     @staticmethod
