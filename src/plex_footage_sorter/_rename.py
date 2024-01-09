@@ -151,6 +151,6 @@ def main(directory: str, match_pattern: str, target_pattern: str):
     _target_pattern = _convert_glob_to_format_string(target_pattern)
 
     for file in files:
-        new_name = _target_pattern % (file.group(1))
+        new_name = _target_pattern % file.groups()
         os.rename(file.group(0), new_name)
         print(f"{file} -> {new_name}")
