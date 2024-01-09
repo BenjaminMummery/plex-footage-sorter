@@ -177,3 +177,22 @@ class TestFailureStates:
             "NotImplementedError: Pattern 'episode_[a].mkv' contains glob wildcards "
             "that are not yet supported."
         )
+
+    @staticmethod
+    def test_mismatching_wildcards_between_match_and_target(
+        tmp_path: Path, cwd, mocker: MockerFixture
+    ):
+        # GIVEN
+        (tmp_path / "episode_a.mkv").write_text("<sentinel>")
+        mocker.patch("sys.argv", ["stub_name", "rename", "episode_?.mkv", "S01E0*.mkv"])
+
+        # WHEN
+        with cwd(tmp_path):
+            with pytest.raises(ValueError) as e:
+                main()
+
+        # THEN
+        assert e.exconly() == (
+            "ValueError: Mismatching glob wildcards between input and output patterns "
+            "'episode_?.mkv' and 'S01E0*.mkv': '?' vs '*'."
+        )
