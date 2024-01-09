@@ -68,12 +68,14 @@ def _convert_glob_to_capturing_regex(pattern: str) -> str:
     Returns:
         str: _description_
     """
-    if any(x in pattern for x in ["?", "["]):
+    if any(x in pattern for x in ["["]):
         raise NotImplementedError(
             f"Pattern '{pattern}' contains glob wildcards that are not yet supported."
         )
 
-    return "(.*)".join(pattern.split("*"))
+    outstr = "(.*)".join(pattern.split("*"))
+    outstr = "(.)".join(outstr.split("?"))
+    return outstr
 
 
 def _convert_glob_to_format_string(pattern: str) -> str:
@@ -87,7 +89,7 @@ def _convert_glob_to_format_string(pattern: str) -> str:
     """
     chars = list(pattern)
     for i, char in enumerate(chars):
-        if char == "*":
+        if char in ["*", "?"]:
             chars[i] = "%s"
     return "".join(chars)
 
