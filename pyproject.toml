@@ -9,7 +9,6 @@ authors=[
 ]
 license = {file = "LICENSE"}
 description = "A simple script to process android phone footage default names into plex-friendly filenames."
-readme = "README.md"
 requires-python = ">=3.8"
 classifiers = [
     "Programming Language :: Python :: 3",
@@ -20,11 +19,12 @@ classifiers = [
     "Programming Language :: Python :: Implementation :: CPython",
     "Programming Language :: Python :: Implementation :: PyPy",
 ]
-dynamic = ["version"]
+dynamic = ["version", "readme"]
 dependencies = []
 
 [tool.setuptools.dynamic]
-version = {attr = "src.__version__"}
+version = {attr = "plex_footage_sorter.VERSION"}
+readme = {file = "README.md"}
 
 [project.urls]
 "Homepage" = "https://github.com/BenjaminMummery/plex-footage-sorter"
