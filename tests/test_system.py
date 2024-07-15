@@ -1,4 +1,4 @@
-# Copyright (c) 2023 Benjamin Mummery
+# Copyright (c) 2023 - 2024 Benjamin Mummery
 
 import os
 
@@ -20,11 +20,25 @@ class TestRun:
     @staticmethod
     def test_flat_folder(virtualenv, tmp_path, custom_name):
         # GIVEN
-        infiles = ["20220202_222222.mp4", "20220203_222222.mp4", "20220203_222223.mp4"]
+        infiles = [
+            "20220202_222222.mp4",
+            "20220203_222222.mp4",
+            "20220203_222223.mp4",
+            "20231216-0009.mp4",
+            "20231216-0010.mp4",
+            "20231217-0008.mp4",
+            "20231217-0090.mp4",
+            "20231217-0095.mp4",
+        ]
         outfiles = [
             "Training Videos - 2022-02-02.mp4",
             "Training Videos - 2022-02-03 - Part1.mp4",
             "Training Videos - 2022-02-03 - Part2.mp4",
+            "Training Videos - 2023-12-16 - Part1.mp4",
+            "Training Videos - 2023-12-16 - Part2.mp4",
+            "Training Videos - 2023-12-17 - Part1.mp4",
+            "Training Videos - 2023-12-17 - Part2.mp4",
+            "Training Videos - 2023-12-17 - Part3.mp4",
         ]
         for file in infiles:
             (tmp_path / file).write_text("")
