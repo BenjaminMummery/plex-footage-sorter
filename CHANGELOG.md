@@ -1,6 +1,26 @@
 # CHANGELOG
 
+## v4.5.0 (2024-07-15)
 
+### Chore
+
+* chore: use backwards-compatible typehints. ([`0b35d19`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/0b35d19393fef8ef8d4dc19b6c696032602264d1))
+
+### Feature
+
+* feat: handle a wider range of name formats.
+
+We previously supported &#39;YYYYMMDD_HHMMSS&#39;. We now additionally support &#39;YYYYMMDD_HHMMSSmmm&#39;, &#39;YYYYMMDD_HHMM&#39;, and variants with - betweent he componenets. ([`d9d1e90`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/d9d1e90138083076fe0f8d6790c1c91b8095049b))
+
+### Test
+
+* test: add tests for multiple file naming formats. ([`ce4cac7`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/ce4cac7453911bcd8c0aba3df7818bdbc3af4f92))
+
+### Unknown
+
+* Merge pull request #37 from BenjaminMummery/feat/more-flexible-date-parsing
+
+Feat: more flexible date parsing ([`c87f8e2`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/c87f8e2ea4f0d400e05454904965cd65499c4afb))
 
 ## v4.4.0 (2024-01-09)
 
@@ -66,7 +86,6 @@
 
 feat: renamer ([`c11ca7b`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/c11ca7b75c6e02ef54ece59a2f5ced5dbedf0fbf))
 
-
 ## v4.3.1 (2023-12-05)
 
 ### Fix
@@ -82,7 +101,6 @@ feat: renamer ([`c11ca7b`](https://github.com/BenjaminMummery/plex-footage-sorte
 * Merge pull request #31 from BenjaminMummery/fix-allow-preexisting-subdirs
 
 fix: handle preexisting season subdir. ([`60a2aba`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/60a2abaf6839b0a735b7f00e2e4d3ac646b274c8))
-
 
 ## v4.3.0 (2023-12-05)
 
@@ -105,7 +123,6 @@ fix: handle preexisting season subdir. ([`60a2aba`](https://github.com/BenjaminM
 * test: add test for non-matching subdir names. ([`49eac5d`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/49eac5d25972dc9a67bc60c56030fdcaeeced522))
 
 * test: add tests for netflix-pattern directory structures. ([`1f664e6`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/1f664e67a3e712fc83cf5226acb781b320bb2c7e))
-
 
 ## v4.2.0 (2023-12-05)
 
@@ -149,7 +166,6 @@ fix: handle preexisting season subdir. ([`60a2aba`](https://github.com/BenjaminM
 
 This reverts commit d9a43b399ca50a80234c7fcd1214bbba68f6b317. ([`fce7e03`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/fce7e033522b65979f4e7a40161c9b1ea1481dc7))
 
-
 ## v4.1.0 (2023-12-04)
 
 ### Feature
@@ -159,7 +175,6 @@ This reverts commit d9a43b399ca50a80234c7fcd1214bbba68f6b317. ([`fce7e03`](https
 ### Test
 
 * test: add test for ([`61de859`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/61de85966f8de909f1ed08be37a15f5e40a84a73))
-
 
 ## v4.0.0 (2023-12-04)
 
@@ -184,8 +199,6 @@ This reverts commit d9a43b399ca50a80234c7fcd1214bbba68f6b317. ([`fce7e03`](https
 * docs: update readme. ([`7a99b4c`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/7a99b4ccb26164793ca921d4e0ab83d53ee4abc4))
 
 * docs: fix type in docstring. ([`67ca43e`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/67ca43e1b994e8ac3666107bd9b50ca806848851))
-
-* docs: update readme. ([`5d92a76`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/5d92a76ffaf9c77f95881c240f9eebe0f769c1bd))
 
 ### Feature
 
@@ -231,8 +244,6 @@ This reverts commit d9a43b399ca50a80234c7fcd1214bbba68f6b317. ([`fce7e03`](https
 
 * test: expaded system tests. ([`06e7c8a`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/06e7c8ab5b52c2d5f80a2d3e3edfb8412bbcf710))
 
-* test: adjust test strategy towards unit testing. ([`e7d7ab2`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/e7d7ab277d7333169547f5f6388cf8af8940dbc5))
-
 ### Unknown
 
 * Merge pull request #25 from BenjaminMummery/21-rename-movpilot-series-downloads
@@ -246,7 +257,6 @@ feat: rename movpilot series downloads ([`94b076e`](https://github.com/BenjaminM
 * Update coverage.yml ([`0e75427`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/0e754270cb689f4daa17b15f6bca86b975312f12))
 
 * Merge branch &#39;main&#39; into 21-rename-movpilot-series-downloads ([`b0a559e`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/b0a559e5337968f7bb04994be2f44f06b60dedad))
-
 
 ## v3.0.0 (2023-11-28)
 
@@ -270,6 +280,10 @@ BREAKING CHANGE: `date-based` must now be specified when calling `plex-footage-s
 
 * chore: bump version number. ([`e810c3a`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/e810c3af020b6e8b289bff87b509e27bad70ab7d))
 
+### Documentation
+
+* docs: update readme. ([`5d92a76`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/5d92a76ffaf9c77f95881c240f9eebe0f769c1bd))
+
 ### Refactor
 
 * refactor: move date-based sorting to its own source file. ([`97d1a13`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/97d1a1349f06c571df7e14e47b3971ea8a66bd81))
@@ -280,8 +294,9 @@ BREAKING CHANGE: `date-based` must now be specified when calling `plex-footage-s
 
 * test: add tests for change to subcommand cli. ([`60a698c`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/60a698c769585c09e7716ce01c3ee9abcf593609))
 
-* test: add tests for change to subcommand cli. ([`e70dfd9`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/e70dfd9afd1538f1585ee00f2e73b5ad58a7a273))
+* test: adjust test strategy towards unit testing. ([`e7d7ab2`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/e7d7ab277d7333169547f5f6388cf8af8940dbc5))
 
+* test: add tests for change to subcommand cli. ([`e70dfd9`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/e70dfd9afd1538f1585ee00f2e73b5ad58a7a273))
 
 ## v2.0.0 (2023-11-28)
 
@@ -292,7 +307,6 @@ BREAKING CHANGE: `date-based` must now be specified when calling `plex-footage-s
 * chore!: Package rename.
 
 * docs: update README. ([`4eb396e`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/4eb396eaee0f33aa22bff668eb76fffd06b45ade))
-
 
 ## v1.2.0 (2023-11-27)
 
@@ -305,7 +319,6 @@ BREAKING CHANGE: `date-based` must now be specified when calling `plex-footage-s
 * feat: rename files recursively.
 
 * test: add tests for improper use of recursion ([`cc94f87`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/cc94f87536d1e14a083d18968b25b351112373d6))
-
 
 ## v1.1.1 (2023-11-25)
 
@@ -320,7 +333,6 @@ Fixes a bug where build versions would default to 0.0.0 ([`c25b55b`](https://git
 * Merge pull request #13 from BenjaminMummery/fix/build-version-numbering
 
 fix: correct version numbering ([`ff7861e`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/ff7861ede7bb901de46e34b1dba726f0ebaf2409))
-
 
 ## v1.1.0 (2023-11-25)
 
@@ -345,7 +357,6 @@ feat: report file discovery ([`f78deb1`](https://github.com/BenjaminMummery/plex
 * feat: report no changes. ([`191f4b5`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/191f4b5bb7ec48c023d9128009dffdda27175d87))
 
 * Update deploy.yml ([`2a6bfc4`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/2a6bfc4476dddb6fceff5afebaecba990118da71))
-
 
 ## v1.0.1 (2023-11-24)
 
