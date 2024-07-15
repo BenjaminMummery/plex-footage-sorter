@@ -2,6 +2,7 @@
 
 import os
 from pathlib import Path
+from typing import List
 
 import pytest
 from pytest_mock import MockerFixture
@@ -95,7 +96,7 @@ class TestFlatDir:
         mocker: MockerFixture,
         custom_name: str,
         recursion_arg: str,
-        filenames: list[str],
+        filenames: List[str],
     ):
         # GIVEN
         for i, file in enumerate(filenames):
