@@ -1,5 +1,17 @@
 # CHANGELOG
 
+## v4.5.2 (2024-07-15)
+
+### Fix
+
+* fix: ignore diplicate files as marked by subscript version numbers. ([`ed45a28`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/ed45a28f1869f3516574f9ed7c8df50b35e67869))
+
+### Unknown
+
+* Merge pull request #39 from BenjaminMummery/fix/ignore-subscripted-duplicate-files
+
+fix: ignore diplicate files as marked by subscript version numbers. ([`5126962`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/5126962d7fbcbd44de7dcc2f9a7a4bf7288c0e4f))
+
 ## v4.5.1 (2024-07-15)
 
 ### Fix
