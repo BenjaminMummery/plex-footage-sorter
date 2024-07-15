@@ -1,5 +1,21 @@
 # CHANGELOG
 
+## v4.5.1 (2024-07-15)
+
+### Fix
+
+* fix: handle m-dashes between days and hours. ([`f59f215`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/f59f215bfec7ee79d7eff609b2efe14034a93bbc))
+
+### Test
+
+* test: add test to reproduce m-dash bug. ([`0e1da08`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/0e1da080fc243d2347423236242307629cb20937))
+
+### Unknown
+
+* Merge pull request #38 from BenjaminMummery/fix/m-dashes
+
+Fix: m-dashes between days and hours cause files to be ignored. ([`f4e8e85`](https://github.com/BenjaminMummery/plex-footage-sorter/commit/f4e8e8576d2f868718a7c3483c0f3eadf514aa12))
+
 ## v4.5.0 (2024-07-15)
 
 ### Chore
