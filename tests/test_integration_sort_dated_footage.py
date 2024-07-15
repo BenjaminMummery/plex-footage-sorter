@@ -1,4 +1,4 @@
-# Copyright (c) 2023 Benjamin Mummery
+# Copyright (c) 2023 - 2024 Benjamin Mummery
 
 import os
 from pathlib import Path
@@ -43,11 +43,26 @@ class TestNullCases:
 @pytest.mark.parametrize("recursion_arg", ["-r", "--recursive", None])
 class TestFlatDir:
     @staticmethod
+    @pytest.mark.parametrize(
+        "filename",
+        [
+            "20220202_222222.mp4",
+            "20220202_222222222.mp4",
+            "20220202_2222.mp4",
+            "2022-02-02-22-22-222.mp4",
+            "2022-02-02_22-22-222.mp4",
+            "2022-02-02_22-22-222_1.mp4",
+        ],
+    )
     def test_renames_single_file_correctly(
-        tmp_path: Path, cwd, mocker: MockerFixture, custom_name: str, recursion_arg: str
+        tmp_path: Path,
+        cwd,
+        mocker: MockerFixture,
+        custom_name: str,
+        recursion_arg: str,
+        filename: str,
     ):
         # GIVEN
-        filename = "20220202_222222.mp4"
         (tmp_path / filename).write_text("<sentinel>")
         args = ["stub_name", "date-based", custom_name]
         if recursion_arg is not None:
@@ -63,11 +78,27 @@ class TestFlatDir:
             assert f.read() == "<sentinel>"
 
     @staticmethod
+    @pytest.mark.parametrize(
+        "filenames",
+        [
+            ["20220202_222222.mp4", "20220202_222223.mp4"],
+            ["20220202_222222222.mp4", "20220202_222222223.mp4"],
+            ["20220202_2222.mp4", "20220202_2223.mp4"],
+            ["20220202_2222.mp4", "20220202_222222223.mp4"],
+            ["20220202_2222.mp4", "20220202_2222_1.mp4"],
+            ["20220202_2222_1.mp4", "20220202_2222_1_1.mp4"],
+        ],
+    )
     def test_renames_multiple_files_for_same_day(
-        tmp_path: Path, cwd, mocker: MockerFixture, custom_name: str, recursion_arg: str
+        tmp_path: Path,
+        cwd,
+        mocker: MockerFixture,
+        custom_name: str,
+        recursion_arg: str,
+        filenames: list[str],
     ):
         # GIVEN
-        for i, file in enumerate(["20220202_222222.mp4", "20220202_222223.mp4"]):
+        for i, file in enumerate(filenames):
             (tmp_path / file).write_text(f"<{i} sentinel>")
         args = ["stub_name", "date-based", custom_name]
         if recursion_arg is not None:
