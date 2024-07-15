@@ -42,6 +42,7 @@ def _discover_files(directory: str, recursive: bool = False) -> dict:
     print(f"Discovering files in {directory}", end="")
     if recursive:
         print(" and subdirectories", end="")
+    print()
 
     days: dict = {}
     if recursive:
@@ -52,11 +53,6 @@ def _discover_files(directory: str, recursive: bool = False) -> dict:
     for file in files:
         _, filename = os.path.split(file)
         oldname = os.path.splitext(filename)[0]
-
-        # some systems append _1 for duplicated filenames. We should strip these out
-        while oldname.endswith(("_1", "_2")):
-            oldname = oldname[:-2]
-            print("\n", oldname)
 
         for format in formats:
             try:
