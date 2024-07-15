@@ -1,4 +1,4 @@
-# Copyright (c) 2023 Benjamin Mummery
+# Copyright (c) 2023 - 2024 Benjamin Mummery
 
 """Process android phone footage default names into plex-friendly filename."""
 
@@ -20,6 +20,20 @@ def _discover_files(directory: str, recursive: bool = False) -> dict:
         dict: A mapping of datetime date objects to file paths, where the date is
             derived from the file name.
     """
+    formats = [
+        "%Y%m%d_%H%M%S",
+        "%Y%m%d_%H%M%-S",
+        "%Y%m%d_%H%M",
+        "%Y%m%d_%H%M%f",
+        "%Y-%m-%d_%H-%M-%S",
+        "%Y-%m-%d_%H-%M-%-S",
+        "%Y-%m-%d_%H-%M",
+        "%Y-%m-%d_%H-%M-%f",
+        "%Y-%m-%d-%H-%M-%S",
+        "%Y-%m-%d-%H-%M-%-S",
+        "%Y-%m-%d-%H-%M",
+        "%Y-%m-%d-%H-%M-%f",
+    ]
 
     print(f"Discovering files in {directory}", end="")
     if recursive:
@@ -33,18 +47,26 @@ def _discover_files(directory: str, recursive: bool = False) -> dict:
 
     for file in files:
         _, filename = os.path.split(file)
+        oldname = os.path.splitext(filename)[0]
 
-        try:
-            if (
-                date := datetime.strptime(
-                    os.path.splitext(filename)[0], "%Y%m%d_%H%M%S"
-                ).date()
-            ) not in days:
-                days[date] = [file]
-            else:
-                days[date].append(file)
-        except ValueError:
-            continue
+        # some systems append _1 for duplicated filenames. We should strip these out
+        while oldname.endswith(("_1", "_2")):
+            oldname = oldname[:-2]
+            print("\n", oldname)
+
+        for format in formats:
+            try:
+                if (
+                    date := datetime.strptime(
+                        os.path.splitext(oldname)[0], format
+                    ).date()
+                ) not in days:
+                    days[date] = [file]
+                else:
+                    days[date].append(file)
+                break
+            except ValueError:
+                continue
     return days
 
 
